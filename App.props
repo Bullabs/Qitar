@@ -1,0 +1,32 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <PropertyGroup>
+    <Version>0.1.0.0</Version>
+    <PackageVersion>0.1.0.0</PackageVersion>
+
+    <Product>***</Product>
+    <Description>***</Description>
+    <PackageTags>***</PackageTags>
+    <Authors>Bullabs</Authors>
+    <Company>Bullabs</Company>
+    <Copyright>Copyright 2021 Bullabs</Copyright>
+    <RepositoryUrl>https://github.com/Bullabs/***</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/bullabs/***</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicense>Apache-2.0</PackageLicense>
+    <PackageLicenseUrl>https://github.com/Bullabs/***/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+     
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
+    <LangVersion>9</LangVersion>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>  
+  </PropertyGroup>
+  
+  <Target Name="AfterBuild">
+    <Exec Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" Command="dotnet pack --configuration Release --output ../../artifacts --no-build"/>
+  </Target>
+  
+</Project>

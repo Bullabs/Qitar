@@ -4,17 +4,16 @@
     <Version>0.1.0.0</Version>
     <PackageVersion>0.1.0.0</PackageVersion>
 
-    <Product>***</Product>
-    <Description>***</Description>
-    <PackageTags>***</PackageTags>
+    <Product>Qitar</Product>
+    <Description>Qitar is a framework for building high-performance applications</Description>
     <Authors>Bullabs</Authors>
     <Company>Bullabs</Company>
     <Copyright>Copyright 2021 Bullabs</Copyright>
-    <RepositoryUrl>https://github.com/Bullabs/***</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/bullabs/***</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Bullabs/Qitar</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/bullabs/Qitar</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicense>Apache-2.0</PackageLicense>
-    <PackageLicenseUrl>https://github.com/Bullabs/***/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/Bullabs/Qitar/blob/master/LICENSE</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
      
     <TargetFrameworks>netstandard2.1</TargetFrameworks>

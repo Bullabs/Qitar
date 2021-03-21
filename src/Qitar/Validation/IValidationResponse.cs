@@ -5,7 +5,7 @@ namespace Qitar.Validation
 {
     public interface IValidationResponse: IResponse
     {
-        IEnumerable<ValidationError> Errors { get; set;}
+        string Error { get; set;}
         bool IsValid { get; set; }
     }
 }

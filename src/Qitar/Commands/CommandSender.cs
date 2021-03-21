@@ -1,5 +1,5 @@
 ﻿using Qitar.Dependencies;
-using Qitar.Objects.Responses;
+using Qitar.Validation;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,9 +9,12 @@ namespace Qitar.Commands
     public class CommandSender : ICommandSender
     {
         private readonly IResolveHandler _resolveHandler;
-        public CommandSender(IResolveHandler resolveHandler)
+        private readonly IValidation _validation;
+
+        public CommandSender(IResolveHandler resolveHandler, IValidation validation)
         {
             _resolveHandler = resolveHandler;
+            _validation = validation;
         }
 
         public async  ValueTask Send<TCommand>(TCommand command, CancellationToken cancellationToken = default)
@@ -22,8 +25,13 @@ namespace Qitar.Commands
                 throw new ArgumentNullException(nameof(command));
             }
 
-            //_resolveHandler.ResolveHandler<ICommandHandler<>
-            await new ValueTask().ConfigureAwait(false);
+            if (command is IValidatable)
+            {
+                await _validation.Validate(command);
+            }
+
+            var handler = _resolveHandler.ResolveHandler<ICommandHandler<TCommand>>();
+            await handler.Handle(command).ConfigureAwait(false);
         }
     }
 }

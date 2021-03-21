@@ -21,11 +21,6 @@
     <IsPackable>true</IsPackable>
     <LangVersion>9</LangVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>  
-  </PropertyGroup>
-  
-  <Target Name="AfterBuild">
-    <Exec Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" Command="dotnet pack --configuration Release --output ../../artifacts --no-build"/>
-  </Target>
-  
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>  
+  </PropertyGroup>  
 </Project>

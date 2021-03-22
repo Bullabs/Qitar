@@ -32,5 +32,4 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release --output artifacts
     - name: Push
-      run: dotnet nuget push artifacts/*.nupkg --no-symbols true
-    
+      run: dotnet nuget push artifacts/*.nupkg --no-symbols true --api-key $NUGET_AUTH_TOKEN --skip-duplicate

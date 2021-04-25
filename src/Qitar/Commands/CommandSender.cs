@@ -13,8 +13,8 @@ namespace Qitar.Commands
 
         public CommandSender(IResolveHandler resolveHandler, IValidation validation)
         {
-            _resolveHandler = resolveHandler;
-            _validation = validation;
+            _resolveHandler = resolveHandler ?? throw new ArgumentNullException(nameof(resolveHandler));
+            _validation = validation ?? throw new ArgumentNullException(nameof(validation));
         }
 
         public async  ValueTask Send<TCommand>(TCommand command, CancellationToken cancellationToken = default)

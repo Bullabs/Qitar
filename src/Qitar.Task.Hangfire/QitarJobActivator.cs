@@ -9,7 +9,7 @@ namespace Qitar.Task.Hangfire
         private readonly IResolver _resolver;
         public QitarJobActivator(IResolver resolver)
         {
-            _resolver = resolver;
+            _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
         }
 
         public override object ActivateJob(Type jobType)

@@ -16,7 +16,7 @@ namespace Qitar.Bus.RabbitMQ
 
         public RabbitMQBusProvider(IModel channel, IOptions<RabbitMQOptions> options)
         {
-            _channel = channel ?? throw new ArgumentException(nameof(channel));
+            _channel = channel ?? throw new ArgumentNullException(nameof(channel));
             _options = options.Value;
         }
 

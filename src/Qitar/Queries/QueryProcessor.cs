@@ -14,7 +14,7 @@ namespace Qitar.Queries
 
         public QueryProcessor(IResolveHandler resolveHandler)
         {
-            _resolveHandler = resolveHandler;
+            _resolveHandler = resolveHandler ?? throw new ArgumentNullException(nameof(resolveHandler));
         }
 
         public ValueTask<TResult> Process<TQuery, TResult>(TQuery query, CancellationToken cancellationToken = default) where TQuery : IQuery<TResult>

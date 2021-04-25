@@ -15,8 +15,8 @@ namespace Qitar.Task.Hangfire
 
         public HangfireProvider(IBackgroundJobClient backgroundJobClient, IRecurringJobManager recurringJobManager)
         {
-            _backgroundJobClient = backgroundJobClient;
-            _recurringJobManager = recurringJobManager;
+            _backgroundJobClient = backgroundJobClient ?? throw new ArgumentNullException(nameof(backgroundJobClient));
+            _recurringJobManager = recurringJobManager ?? throw new ArgumentNullException(nameof(recurringJobManager));
         }
 
         public ValueTask AddRecurringJob(IJob job, string cronExpression, CancellationToken cancellationToken = default)

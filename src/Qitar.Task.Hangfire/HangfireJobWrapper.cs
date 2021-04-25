@@ -1,4 +1,5 @@
 ﻿using Qitar.Jobs;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace Qitar.Task.Hangfire
 
         public HangfireJobWrapper(IJobRunner jobRunner)
         {
-            _jobRunner = jobRunner;
+            _jobRunner = jobRunner ?? throw new ArgumentNullException(nameof(jobRunner));
         }
 
         public async ValueTask Excute(IJob job, CancellationToken cancellationToken)

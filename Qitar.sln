@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Bus.RabbitMQ", "src\Q
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Store.Dapper", "src\Qitar.Store.Dapper\Qitar.Store.Dapper.csproj", "{DF18F5B9-5D84-471C-AFCA-ADF6B0AFEE1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Task.Hangfire", "src\Qitar.Task.Hangfire\Qitar.Task.Hangfire.csproj", "{66A5911D-68A6-442E-A499-2EDFC5F88650}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Task.Hangfire", "src\Qitar.Task.Hangfire\Qitar.Task.Hangfire.csproj", "{66A5911D-68A6-442E-A499-2EDFC5F88650}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Serializer.Text.Json", "src\Qitar.Serializer.Text.Json\Qitar.Serializer.Text.Json.csproj", "{B74A884C-BFA7-4EF6-A715-E3E62657A5D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Serializer.Text.Json", "src\Qitar.Serializer.Text.Json\Qitar.Serializer.Text.Json.csproj", "{B74A884C-BFA7-4EF6-A715-E3E62657A5D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Caching.DistributedCache", "src\Qitar.Caching.DistributedCache\Qitar.Caching.DistributedCache.csproj", "{B216BD05-8BAD-46A9-9EFB-532DFD373C8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Caching.DistributedCache.Memory", "src\Qitar.Caching.DistributedCache.Memory\Qitar.Caching.DistributedCache.Memory.csproj", "{DB8EFB42-120F-40E7-A5CE-8252CF528645}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{B74A884C-BFA7-4EF6-A715-E3E62657A5D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B74A884C-BFA7-4EF6-A715-E3E62657A5D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B74A884C-BFA7-4EF6-A715-E3E62657A5D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B216BD05-8BAD-46A9-9EFB-532DFD373C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B216BD05-8BAD-46A9-9EFB-532DFD373C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B216BD05-8BAD-46A9-9EFB-532DFD373C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B216BD05-8BAD-46A9-9EFB-532DFD373C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB8EFB42-120F-40E7-A5CE-8252CF528645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8EFB42-120F-40E7-A5CE-8252CF528645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8EFB42-120F-40E7-A5CE-8252CF528645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8EFB42-120F-40E7-A5CE-8252CF528645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

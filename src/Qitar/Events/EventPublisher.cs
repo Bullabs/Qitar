@@ -1,4 +1,5 @@
 ﻿using Qitar.Dependencies;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Qitar.Events
 
         public EventPublisher(IResolver resolver)
         {
-            _resolver = resolver;
+            _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
         }
 
         public async ValueTask Publish<TEvent>(IEnumerable<TEvent> events, CancellationToken cancellationToken = default) where TEvent : IEvent

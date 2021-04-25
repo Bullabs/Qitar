@@ -1,17 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../App.props" />
 
   <PropertyGroup>
-    <PackageId>Qitar.Serializer.Text.Json</PackageId>
+    <PackageId>Qitar.Caching.DistributedCache</PackageId>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,7 +11,7 @@ namespace Qitar.Validation
 
         public Validation(IValidationProvider validationProvider)
         {
-            _validationProvider = validationProvider;
+            _validationProvider = validationProvider ?? throw new ArgumentNullException(nameof(validationProvider));
         }
 
         public async ValueTask Validate<TCommand>(TCommand command, CancellationToken canclationToken = default) where TCommand : ICommand

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Caching.DistributedCa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Caching.DistributedCache.Memory", "src\Qitar.Caching.DistributedCache.Memory\Qitar.Caching.DistributedCache.Memory.csproj", "{DB8EFB42-120F-40E7-A5CE-8252CF528645}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Store.EntityFramework", "src\Qitar.Store.EntityFramework\Qitar.Store.EntityFramework.csproj", "{B1697071-A645-4F8F-AA55-1FC387D541B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{DB8EFB42-120F-40E7-A5CE-8252CF528645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB8EFB42-120F-40E7-A5CE-8252CF528645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB8EFB42-120F-40E7-A5CE-8252CF528645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1697071-A645-4F8F-AA55-1FC387D541B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1697071-A645-4F8F-AA55-1FC387D541B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1697071-A645-4F8F-AA55-1FC387D541B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1697071-A645-4F8F-AA55-1FC387D541B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

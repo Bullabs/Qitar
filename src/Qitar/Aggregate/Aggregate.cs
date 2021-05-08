@@ -1,25 +1,21 @@
 ﻿using Qitar.Events;
-using Qitar.Objects;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Qitar.Aggregate
 {
-    public class Aggregate<TKey> : IAggregate<TKey>
+    public abstract class Aggregate<TKey> : IAggregate<TKey>
     {
         private readonly Queue<IEvent> _uncommittedEvents;
 
         public Aggregate()
         {
-            _uncommittedEvents = new Queue<IEvent>();
+            _uncommittedEvents = new();
         }
 
         public TKey Id { get; protected set; }
 
         public int Version { get; protected set; }
-
-        object IIdentity.Id => Id;
 
         public IEnumerable<IEvent> DequeueUncommittedEvents()
         {

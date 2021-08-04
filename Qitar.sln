@@ -13,11 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Task.Hangfire", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Serializer.Text.Json", "src\Qitar.Serializer.Text.Json\Qitar.Serializer.Text.Json.csproj", "{B74A884C-BFA7-4EF6-A715-E3E62657A5D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Caching.DistributedCache", "src\Qitar.Caching.DistributedCache\Qitar.Caching.DistributedCache.csproj", "{B216BD05-8BAD-46A9-9EFB-532DFD373C8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Caching.DistributedCache", "src\Qitar.Caching.DistributedCache\Qitar.Caching.DistributedCache.csproj", "{B216BD05-8BAD-46A9-9EFB-532DFD373C8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Caching.DistributedCache.Memory", "src\Qitar.Caching.DistributedCache.Memory\Qitar.Caching.DistributedCache.Memory.csproj", "{DB8EFB42-120F-40E7-A5CE-8252CF528645}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Caching.DistributedCache.Memory", "src\Qitar.Caching.DistributedCache.Memory\Qitar.Caching.DistributedCache.Memory.csproj", "{DB8EFB42-120F-40E7-A5CE-8252CF528645}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Store.EntityFramework", "src\Qitar.Store.EntityFramework\Qitar.Store.EntityFramework.csproj", "{B1697071-A645-4F8F-AA55-1FC387D541B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Store.EntityFramework", "src\Qitar.Store.EntityFramework\Qitar.Store.EntityFramework.csproj", "{B1697071-A645-4F8F-AA55-1FC387D541B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Bus.Kafka", "src\Qitar.Bus.Kafka\Qitar.Bus.Kafka.csproj", "{FFDE60AF-5208-4D98-8A47-F061B0B88F45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{B1697071-A645-4F8F-AA55-1FC387D541B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1697071-A645-4F8F-AA55-1FC387D541B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1697071-A645-4F8F-AA55-1FC387D541B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFDE60AF-5208-4D98-8A47-F061B0B88F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFDE60AF-5208-4D98-8A47-F061B0B88F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFDE60AF-5208-4D98-8A47-F061B0B88F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFDE60AF-5208-4D98-8A47-F061B0B88F45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

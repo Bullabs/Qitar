@@ -1,12 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
 using Qitar.Events;
-using Qitar.Messages;
 using Qitar.Serialization;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -47,16 +45,16 @@ namespace Qitar.Bus.RabbitMQ
         public ValueTask<string> Subscribe(string queueName, CancellationToken cancellationToken = default)
         {
             var consumer = new AsyncEventingBasicConsumer(_channel);
-            consumer.Received += ConsumerEvent;
+            consumer.Received += ConsumerMessage;
             var queueTag = _channel.BasicConsume(queueName, true, consumer);
             return new ValueTask<string>(queueTag);
         }
 
-        private static async Task ConsumerEvent(object sender, BasicDeliverEventArgs message)
+        private async Task ConsumerMessage(object sender, BasicDeliverEventArgs message)
         {
-            var type = message.BasicProperties.Type;
-            var @event = message.Body
-            
+            var @event = await _serializer.DeserializeAsync<IEvent>(message.Body.ToArray(), default).ConfigureAwait(false);
+
+            await _eventPublisher.Publish(@event, default).ConfigureAwait(false);
         }
 
     }

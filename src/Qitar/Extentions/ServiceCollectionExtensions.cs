@@ -1,7 +1,6 @@
 ﻿using Mapster;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Qitar;
 using Qitar.Caching;
 using Qitar.Commands;
 using Qitar.Events;
@@ -27,7 +26,7 @@ namespace Qitar
                .AddClasses()
                .AsImplementedInterfaces());
             
-            services.AddMapping(typeList).AddSerializer();
+            services.AddMapping(typeList).AddSerializer().AddCaching();
             return services;
         }
 

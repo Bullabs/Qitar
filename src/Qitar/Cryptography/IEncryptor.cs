@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Qitar.Security
+namespace Qitar.Cryptography
 {
     public interface IEncryptor
     {

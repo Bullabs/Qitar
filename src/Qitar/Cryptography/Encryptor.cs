@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Qitar.Security
+namespace Qitar.Cryptography
 {
     public class Encryptor : IEncryptor
     {

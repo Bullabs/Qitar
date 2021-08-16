@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Qitar.Mapping
 {
@@ -10,7 +8,7 @@ namespace Qitar.Mapping
 
         public Mapper(IMappingProvider mappingProvider)
         {
-            _mappingProvider = mappingProvider;
+            _mappingProvider = mappingProvider ?? throw new ArgumentNullException(nameof(mappingProvider));
         }
 
         public dynamic CreateConcreteObject(object obj)

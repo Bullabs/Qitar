@@ -1,6 +1,7 @@
 ﻿using Mapster;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Qitar;
+using Qitar.Caching;
 using Qitar.Commands;
 using Qitar.Events;
 using Qitar.Queries;
@@ -25,19 +26,31 @@ namespace Qitar
                .AddClasses()
                .AsImplementedInterfaces());
             
-            services.AddMapping(typeList).AddSerializer();
+            services.AddMapping(typeList).AddSerializer().AddCaching();
             return services;
         }
 
 
         private static IServiceCollection AddSerializer(this IServiceCollection services)
         {
-            /*services.AddOptions<SerializerOptions>().Configure<IConfiguration>((settings, configuration) =>
+            services.AddOptions<SerializerOptions>().Configure<IConfiguration>((settings, configuration) =>
             {
-                configuration.GetSection("Application.Infrastructure.Serializer").Bind(settings);
-            });*/
+                configuration.GetSection("Qitar.Serializer").Bind(settings);
+            });
 
             services.AddTransient<ISerializer, Serializer>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddCaching(this IServiceCollection services)
+        {
+           services.AddOptions<CacheOptions>().Configure<IConfiguration>((settings, configuration) =>
+           {
+               configuration.GetSection("Qitar.Caching").Bind(settings);
+           });
+
+            services.AddTransient<ICacheService, CacheService>();
 
             return services;
         }

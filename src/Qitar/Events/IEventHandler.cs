@@ -1,10 +1,8 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using Qitar.Messages;
 
 namespace Qitar.Events
 {
-    public interface IEventHandler<in TEvent> where TEvent : IEvent
+    public interface IEventHandler<in TEvent>: IMessageHandler<TEvent> where TEvent : IEvent
     {
-        ValueTask Handle(TEvent @event, CancellationToken cancellationToken = default);
     }
 }

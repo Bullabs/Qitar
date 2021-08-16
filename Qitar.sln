@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Web", "src\Qitar.Web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Caching.DistributedCache.Redis", "src\Qitar.Caching.DistributedCache.Redis\Qitar.Caching.DistributedCache.Redis.csproj", "{141696C6-3AEA-4C87-8D89-01B2198023F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Validation.FluentValidation", "src\Qitar.Validation.FluentValidation\Qitar.Validation.FluentValidation.csproj", "{DD99C4D4-E77D-472C-B0D4-924767E7592E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{141696C6-3AEA-4C87-8D89-01B2198023F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{141696C6-3AEA-4C87-8D89-01B2198023F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{141696C6-3AEA-4C87-8D89-01B2198023F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD99C4D4-E77D-472C-B0D4-924767E7592E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD99C4D4-E77D-472C-B0D4-924767E7592E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD99C4D4-E77D-472C-B0D4-924767E7592E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD99C4D4-E77D-472C-B0D4-924767E7592E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

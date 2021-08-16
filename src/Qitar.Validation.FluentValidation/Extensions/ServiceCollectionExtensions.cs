@@ -12,7 +12,7 @@ namespace Qitar.Validation.FluentValidation.Extensions
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddScoped(typeof(IRepository<>), typeof(DapperRepository<>));
+            services.AddTransient<IValidationProvider, FluentValidationProvider>();
 
             return services;
         }

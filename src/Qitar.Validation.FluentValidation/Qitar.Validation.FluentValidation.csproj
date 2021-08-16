@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../App.props" />
 
@@ -11,7 +11,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <PackageReference Include="FluentValidation" Version="10.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.0" />
   </ItemGroup>
 
   <ItemGroup>

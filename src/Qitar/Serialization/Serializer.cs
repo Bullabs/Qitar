@@ -77,6 +77,13 @@ namespace Qitar.Serialization
 
         public async ValueTask<string> SerializeAsync<TObject>(TObject obj, CancellationToken cancellationToken)
         {
+            var stream = (MemoryStream) await SerializeStreamAsync(obj, cancellationToken).ConfigureAwait(false);
+
+            return Encoding.UTF8.GetString((stream).ToArray());
+        }
+
+        public async ValueTask<Stream> SerializeStreamAsync<TObject>(TObject obj, CancellationToken cancellationToken)
+        {
             if (obj == null)
             {
                 throw new ArgumentNullException(nameof(obj));
@@ -84,7 +91,7 @@ namespace Qitar.Serialization
 
             using var stream = new MemoryStream();
             await _provider.SerializeAsync(stream, obj, cancellationToken);
-            return Encoding.UTF8.GetString((stream).ToArray());
+            return stream;
         }
     }
 }

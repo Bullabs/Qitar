@@ -8,6 +8,7 @@ namespace Qitar.Serialization
     public interface ISerializer
     {
         ValueTask<string> SerializeAsync<TObject>(TObject obj, CancellationToken cancellationToken);
+        ValueTask<Stream> SerializeStreamAsync<TObject>(TObject obj, CancellationToken cancellationToken);
         ValueTask<object> DeserializeAsync(string value, Type type, CancellationToken cancellationToken);
         ValueTask<TObject> DeserializeAsync<TObject>(byte[] valueArray, CancellationToken cancellationToken);
         ValueTask<TObject> DeserializeAsync<TObject>(string value, CancellationToken cancellationToken);

@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Qitar.Entities;
+using System;
 
 namespace Qitar.Tenancy
 {
-    interface TenantConfiguration
+    public class TenantConfiguration : IEntity
     {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string ConnectionStrings { get; set; }
     }
 }

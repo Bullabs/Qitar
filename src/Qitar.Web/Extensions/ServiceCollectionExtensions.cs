@@ -1,5 +1,4 @@
-﻿using CorrelationId.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace Qitar.Web.Extensions
@@ -14,7 +13,6 @@ namespace Qitar.Web.Extensions
             }
 
             services.AddVersioning();
-            services.AddDefaultCorrelationId();
 
             return services;
         }

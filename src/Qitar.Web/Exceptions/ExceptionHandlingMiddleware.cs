@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Qitar.Web.Exceptions
 {
-    public class ErrorHandlerMiddleware : IMiddleware
+    public class ExceptionHandlingMiddleware : IMiddleware
     {
         private readonly ISerializer _serializer;
-        private readonly ILogger<ErrorHandlerMiddleware> _logger;
+        private readonly ILogger<ExceptionHandlingMiddleware> _logger;
 
-        public ErrorHandlerMiddleware(ISerializer serializer, ILogger<ErrorHandlerMiddleware> logger)
+        public ExceptionHandlingMiddleware(ISerializer serializer, ILogger<ExceptionHandlingMiddleware> logger)
         {
             _serializer = serializer;
             _logger = logger;

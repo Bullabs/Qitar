@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Qitar.Bus
 {
-    public class MessageBus : IMessageBus
+    public class Bus : IBus
     {
         private readonly IResolver _resolver;
         private readonly Dictionary<Type, List<object>> _subscribers;
 
-        public MessageBus(IResolver resolver)
+        public Bus(IResolver resolver)
         {
             _resolver = resolver ?? throw new ArgumentException(nameof(resolver));
             _subscribers = new Dictionary<Type, List<object>>();

@@ -9,4 +9,13 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    labels:
+      - maintenance
+      - dependencies  
     target-branch: "development"  
+  - package-ecosystem: "github-actions"
+    directory: "/" # This should be / rather than .github/workflows
+    schedule:
+      interval: daily
+    labels:
+      - maintenance   

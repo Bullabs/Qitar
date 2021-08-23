@@ -9,7 +9,7 @@ namespace Qitar.Commands
     {
         public bool IsSuccessful { get; set; }
         public string Message { get; set; }
-        IEnumerable<IEvent> Events { get; set; } 
+        public IEnumerable<IEvent> Events { get; set; } 
         public ValidationResponse ValidationResults { get; set; }
 
         public CommandResponse(bool isSuccessful, string message, IEvent @event, ValidationResponse validationResults) : this(isSuccessful, message, validationResults)

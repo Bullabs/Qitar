@@ -10,7 +10,7 @@ namespace Qitar.Dependencies
 
         public Resolver(IServiceProvider serviceProvider)
         {
-            _serviceProvider = serviceProvider;
+            _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }
 
         public object Resolve(Type type)

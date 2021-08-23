@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Qitar.Commands;
 using Qitar.Dependencies;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace Qitar.Validation.FluentValidation
 
         public FluentValidationProvider(IResolveHandler resolveHandler)
         {
-            _resolveHandler = resolveHandler;
+            _resolveHandler = resolveHandler ?? throw new ArgumentNullException(nameof(resolveHandler));
         }
 
         public async  ValueTask<IValidationResponse> Validate<TCommand>(TCommand command, CancellationToken canclationToken = default) where TCommand : ICommand

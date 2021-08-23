@@ -10,7 +10,7 @@ namespace Qitar.Dependencies
 
         public ResolveHandler(IResolver resolver)
         {
-            _resolver = resolver;
+            _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
         }
 
         THandler IResolveHandler.ResolveHandler<THandler>()

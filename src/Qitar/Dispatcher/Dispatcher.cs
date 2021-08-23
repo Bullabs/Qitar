@@ -1,5 +1,5 @@
 ﻿using Qitar.Queries;
-
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,7 +10,7 @@ namespace Qitar.Dispatcher
         private readonly IQueryProcessor _queryProcessor;
         public Dispatcher(IQueryProcessor queryProcessor)
         {
-            _queryProcessor = queryProcessor;
+            _queryProcessor = queryProcessor ?? throw new ArgumentNullException(nameof(queryProcessor));
         }
 
         public async ValueTask<TResult> GetResult<TQuery, TResult>(TQuery query, CancellationToken cancellationToken) where TQuery : IQuery<TResult>

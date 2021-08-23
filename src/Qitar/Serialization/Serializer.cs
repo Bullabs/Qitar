@@ -12,7 +12,7 @@ namespace Qitar.Serialization
 
         public Serializer(ISerializerProvider provider)
         {
-            _provider = provider;
+            _provider = provider ?? throw new ArgumentNullException(nameof(provider));
         }
 
         public async ValueTask<object> DeserializeAsync(string value, Type type, CancellationToken cancellationToken)

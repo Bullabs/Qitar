@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Qitar.Utils;
+using System;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -15,56 +16,40 @@ namespace Qitar.Serialization
             _provider = provider ?? throw new ArgumentNullException(nameof(provider));
         }
 
-        public async ValueTask<object> DeserializeAsync(string value, Type type, CancellationToken cancellationToken)
+        public async ValueTask<object> Deserialize(string value, Type type, CancellationToken cancellationToken)
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException("Deserialize string is null");
-            }
-
-            if (type == null)
-            {
-                throw new ArgumentNullException("Deserialize type is null");
-            }
+            value.NotNull();
+            type.NotNull();
 
             using var stream = new MemoryStream(Encoding.UTF8.GetBytes(value));
 
             return await _provider.DeserializeAsync(stream, type, cancellationToken).ConfigureAwait(false);
         }
 
-        public async ValueTask<TObject> DeserializeAsync<TObject>(string value, CancellationToken cancellationToken)
+        public async ValueTask<TObject> Deserialize<TObject>(string value, CancellationToken cancellationToken)
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException("Deserialize string is null");
-            }
+            value.NotNull();
 
             using var stream = new MemoryStream(Encoding.UTF8.GetBytes(value));
 
             return await _provider.DeserializeAsync<TObject>(stream, cancellationToken).ConfigureAwait(false);
         }
 
-        public async ValueTask<TObject> DeserializeAsync<TObject>(Stream stream, CancellationToken cancellationToken)
+        public async ValueTask<TObject> Deserialize<TObject>(Stream stream, CancellationToken cancellationToken)
         {
-            if (stream == null)
-            {
-                throw new ArgumentNullException("Deserialize stream is null");
-            }
+            stream.NotNull();
 
             return await _provider.DeserializeAsync<TObject>(stream, cancellationToken).ConfigureAwait(false);
         }
 
-        public async ValueTask<object> DeserializeAsync(Stream stream, Type type, CancellationToken cancellationToken)
+        public async ValueTask<object> Deserialize(Stream stream, Type type, CancellationToken cancellationToken)
         {
-            if (stream == null)
-            {
-                throw new ArgumentNullException("Deserialize stream is null");
-            }
+            stream.NotNull();
 
             return await _provider.DeserializeAsync(stream, type, cancellationToken).ConfigureAwait(false);
         }
 
-        public async ValueTask<TObject> DeserializeAsync<TObject>(byte[] valueArray, CancellationToken cancellationToken)
+        public async ValueTask<TObject> Deserialize<TObject>(byte[] valueArray, CancellationToken cancellationToken)
         {
             if (valueArray == null)
             {
@@ -75,19 +60,16 @@ namespace Qitar.Serialization
             return await _provider.DeserializeAsync<TObject>(stream, cancellationToken).ConfigureAwait(false);
         }
 
-        public async ValueTask<string> SerializeAsync<TObject>(TObject obj, CancellationToken cancellationToken)
+        public async ValueTask<string> Serialize<TObject>(TObject obj, CancellationToken cancellationToken)
         {
-            var stream = (MemoryStream) await SerializeStreamAsync(obj, cancellationToken).ConfigureAwait(false);
+            var stream = (MemoryStream) await SerializeStream(obj, cancellationToken).ConfigureAwait(false);
 
             return Encoding.UTF8.GetString((stream).ToArray());
         }
 
-        public async ValueTask<Stream> SerializeStreamAsync<TObject>(TObject obj, CancellationToken cancellationToken)
+        public async ValueTask<Stream> SerializeStream<TObject>(TObject obj, CancellationToken cancellationToken)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException(nameof(obj));
-            }
+            obj.NotNull();
 
             using var stream = new MemoryStream();
             await _provider.SerializeAsync(stream, obj, cancellationToken);

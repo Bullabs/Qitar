@@ -26,7 +26,7 @@ namespace Qitar.Bus
 
         public async ValueTask Publish<TMessage>(TMessage message, CancellationToken cancellationToken = default) where TMessage : IMessage
         {
-            var json = await _serializer.SerializeAsync(message, cancellationToken).ConfigureAwait(false);
+            var json = await _serializer.Serialize(message, cancellationToken).ConfigureAwait(false);
             var data = Encoding.UTF8.GetBytes(json);
 
             await _busProvider.Publish("", message.GetType(), data, null, cancellationToken).ConfigureAwait(false);

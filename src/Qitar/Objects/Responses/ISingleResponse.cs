@@ -1,6 +1,6 @@
 ﻿namespace Qitar.Objects.Responses
 {
-    public interface ISingleResponse<T> : IResponse
+    public interface ISingleResponse<out T> : IResponse
     {
         T Item { get; }
     }

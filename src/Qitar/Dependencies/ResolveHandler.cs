@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Qitar.Utils;
+using System;
 
 namespace Qitar.Dependencies
 {
@@ -17,10 +16,7 @@ namespace Qitar.Dependencies
         {
             var handler = _resolver.Resolve<THandler>();
 
-            if (handler == null)
-            {
-                throw new ArgumentNullException(nameof(THandler));
-            }
+            handler.NotNull();
 
             return handler;
         }

@@ -36,7 +36,7 @@ namespace Qitar.Cryptography
                 using (var streamWriter = new StreamWriter(cryptoStream))
                 {
                     await streamWriter.WriteAsync(data.ToCharArray(), cancellationToken).ConfigureAwait(false);
-                };
+                }
 
                 return iv + Convert.ToBase64String(memoryStream.ToArray());
             }

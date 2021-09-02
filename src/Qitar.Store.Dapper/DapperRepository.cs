@@ -2,6 +2,7 @@
 using Qitar.Entities;
 using Qitar.Objects;
 using Qitar.Repositories;
+using Qitar.Utils;
 using System;
 using System.Data;
 using System.Threading;
@@ -20,42 +21,31 @@ namespace Qitar.Store.Dapper
 
         public async ValueTask<bool> Delete(TEntity entity, CancellationToken cancellationToken = default)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException(nameof(entity));
-            }
+            entity.NotNull();
 
             return await _dbConnection.DeleteAsync(entity).ConfigureAwait(false);
         }
 
         public async ValueTask<TEntity> GetById(object id, CancellationToken cancellationToken = default)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.NotNull();
 
             return await _dbConnection.GetAsync<TEntity>(id).ConfigureAwait(false);
         }
 
         public async ValueTask<TEntity> Insert(TEntity entity, CancellationToken cancellationToken = default)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException(nameof(entity));
-            }
 
-             await _dbConnection.InsertAsync(entity).ConfigureAwait(false);
+            entity.NotNull();
+
+            await _dbConnection.InsertAsync(entity).ConfigureAwait(false);
 
             return entity;
         }
 
         public async ValueTask<bool> Update(TEntity entity, CancellationToken cancellationToken = default)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException(nameof(entity));
-            }
+            entity.NotNull();
 
             return await _dbConnection.UpdateAsync(entity).ConfigureAwait(false);
         }

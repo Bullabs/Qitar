@@ -7,12 +7,12 @@ namespace Qitar.Serialization
 {
     public interface ISerializer
     {
-        ValueTask<string> SerializeAsync<TObject>(TObject obj, CancellationToken cancellationToken);
-        ValueTask<Stream> SerializeStreamAsync<TObject>(TObject obj, CancellationToken cancellationToken);
-        ValueTask<object> DeserializeAsync(string value, Type type, CancellationToken cancellationToken);
-        ValueTask<TObject> DeserializeAsync<TObject>(byte[] valueArray, CancellationToken cancellationToken);
-        ValueTask<TObject> DeserializeAsync<TObject>(string value, CancellationToken cancellationToken);
-        ValueTask<TObject> DeserializeAsync<TObject>(Stream stream, CancellationToken cancellationToken);
-        ValueTask<object> DeserializeAsync(Stream stream, Type type, CancellationToken cancellationToken);
+        ValueTask<string> Serialize<TObject>(TObject obj, CancellationToken cancellationToken);
+        ValueTask<Stream> SerializeStream<TObject>(TObject obj, CancellationToken cancellationToken);
+        ValueTask<object> Deserialize(string value, Type type, CancellationToken cancellationToken);
+        ValueTask<TObject> Deserialize<TObject>(byte[] valueArray, CancellationToken cancellationToken);
+        ValueTask<TObject> Deserialize<TObject>(string value, CancellationToken cancellationToken);
+        ValueTask<TObject> Deserialize<TObject>(Stream stream, CancellationToken cancellationToken);
+        ValueTask<object> Deserialize(Stream stream, Type type, CancellationToken cancellationToken);
     }
 }

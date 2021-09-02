@@ -27,14 +27,4 @@ jobs:
         sonarOrganisation: bullabs
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}    
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-    
-
-    
-
+        SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}  

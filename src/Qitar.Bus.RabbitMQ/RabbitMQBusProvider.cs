@@ -25,18 +25,18 @@ namespace Qitar.Bus.RabbitMQ
             _options = options.Value;
         }
 
-        public ValueTask Publish(string messageType, byte[] data, TimeSpan? delay, CancellationToken cancellationToken = default)
+        public ValueTask Publish(string topic, Type messageType, byte[] data, TimeSpan? delay, CancellationToken cancellationToken = default)
         {
             var basicProps = _channel.CreateBasicProperties();
             basicProps.MessageId = Guid.NewGuid().ToString("N");
-            basicProps.Type = messageType;
+            basicProps.Type = messageType.ToString();
 
             if(delay.HasValue && delay.Value> TimeSpan.Zero)
             {
                 basicProps.Headers = new Dictionary<string,object> { { "x-delay", Convert.ToInt32(delay.Value.TotalMilliseconds) } };
             }
 
-            _channel.BasicPublish(_options.Topic, String.Empty, basicProps, data);
+            _channel.BasicPublish(topic, String.Empty, basicProps, data);
 
             return default;
 

@@ -21,7 +21,7 @@ namespace Qitar.Task.Hangfire
 
         public ValueTask AddRecurringJob(IJob job, string cronExpression, CancellationToken cancellationToken = default)
         {
-            _recurringJobManager.AddOrUpdate<HangfireJobWrapper>(nameof(job),j => j.Excute(job, cancellationToken), cronExpression);
+            _recurringJobManager.AddOrUpdate<HangfireJobWrapper>(nameof(job),j => j.Excute(job, cancellationToken).ConfigureAwait(false), cronExpression);
 
             return default;
         }
@@ -42,7 +42,7 @@ namespace Qitar.Task.Hangfire
 
         public ValueTask<IJobId> ScheduleJob(IJob job, TimeSpan delay, CancellationToken cancellationToken = default)
         {
-            var id = _backgroundJobClient.Schedule<HangfireJobWrapper>(j => j.Excute(job, cancellationToken), delay);
+            var id = _backgroundJobClient.Schedule<HangfireJobWrapper>(j => j.Excute(job, cancellationToken).ConfigureAwait(false), delay);
 
             return default;
         }

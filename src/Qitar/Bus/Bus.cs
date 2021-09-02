@@ -1,7 +1,9 @@
 ﻿using Qitar.Dependencies;
 using Qitar.Messages;
+using Qitar.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,17 +12,24 @@ namespace Qitar.Bus
     public class Bus : IBus
     {
         private readonly IResolver _resolver;
+        private readonly IBusProvider _busProvider;
+        private readonly ISerializer _serializer;
         private readonly Dictionary<Type, List<object>> _subscribers;
 
-        public Bus(IResolver resolver)
+        public Bus(IResolver resolver, IBusProvider busProvider, ISerializer serializer )
         {
             _resolver = resolver ?? throw new ArgumentException(nameof(resolver));
+            _busProvider = busProvider?? throw new ArgumentException(nameof(busProvider));
+            _serializer = serializer ?? throw new ArgumentException(nameof(serializer));
             _subscribers = new Dictionary<Type, List<object>>();
         }
 
-        public ValueTask Publish<TMessage>(TMessage message, CancellationToken cancellationToken = default) where TMessage : IMessage
+        public async ValueTask Publish<TMessage>(TMessage message, CancellationToken cancellationToken = default) where TMessage : IMessage
         {
-            throw new NotImplementedException();
+            var json = await _serializer.SerializeAsync(message, cancellationToken).ConfigureAwait(false);
+            var data = Encoding.UTF8.GetBytes(json);
+
+            await _busProvider.Publish("", message.GetType(), data, null, cancellationToken).ConfigureAwait(false);
         }
 
         public ValueTask Subscribe<TMessage>(TMessage message, CancellationToken cancellationToken = default) where TMessage : IMessage

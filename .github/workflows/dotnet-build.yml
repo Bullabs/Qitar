@@ -18,13 +18,13 @@ jobs:
         source-url: https://nuget.pkg.github.com/Bullabs/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-    
-
-    
-
+    - name: SonarCloud Scan
+      uses: Secbyte/dotnet-sonarscanner@v2.3
+      with:
+        buildCommand: dotnet build .
+        projectKey: Bullabs_Qitar
+        projectName: Qitar
+        sonarOrganisation: bullabs
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}  

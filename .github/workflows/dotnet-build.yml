@@ -20,9 +20,6 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.6
-      with:
-        projectKey: Bullabs_Qitar
-        orgnization: bullabs
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}    

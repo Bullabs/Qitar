@@ -1,4 +1,5 @@
 ﻿using Qitar.Commands;
+using Qitar.Utils;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,10 +17,7 @@ namespace Qitar.Validation
 
         public async ValueTask Validate<TCommand>(TCommand command, CancellationToken canclationToken = default) where TCommand : ICommand
         {
-            if (command == null)
-            {
-                throw new ArgumentNullException(nameof(command));
-            }
+            command.NotNull();
 
             var response = await _validationProvider.Validate(command, canclationToken).ConfigureAwait(false);
 

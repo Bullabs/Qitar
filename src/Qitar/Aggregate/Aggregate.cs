@@ -8,7 +8,7 @@ namespace Qitar.Aggregate
     {
         private readonly Queue<IEvent> _uncommittedEvents;
 
-        public Aggregate()
+        protected Aggregate()
         {
             _uncommittedEvents = new();
         }

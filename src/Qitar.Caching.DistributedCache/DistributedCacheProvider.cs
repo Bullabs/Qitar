@@ -24,7 +24,7 @@ namespace Qitar.Caching.DistributedCache
                 AbsoluteExpirationRelativeToNow = new TimeSpan(0, cacheTime, 0)
             };
 
-            var value = await _serializer.SerializeAsync(obj, cancellationToken).ConfigureAwait(false);
+            var value = await _serializer.Serialize(obj, cancellationToken).ConfigureAwait(false);
 
             await _distributedCache.SetStringAsync(key, value, cacheOptions, cancellationToken).ConfigureAwait(false);
         }
@@ -33,14 +33,14 @@ namespace Qitar.Caching.DistributedCache
         {
             var value = await _distributedCache.GetStringAsync(key, cancellationToken).ConfigureAwait(false);
 
-            return await _serializer.DeserializeAsync<T>(value, cancellationToken).ConfigureAwait(false);
+            return await _serializer.Deserialize<T>(value, cancellationToken).ConfigureAwait(false);
         }
 
         public async ValueTask<bool> IsSet(string key, CancellationToken cancellationToken = default)
         {
             var value = await _distributedCache.GetAsync(key, cancellationToken).ConfigureAwait(false);
 
-            return (value == null || value.Length == 0) ? false : true;
+            return value == null || value.Length == 0 ;
         }
 
         public async ValueTask Remove(string key, CancellationToken cancellationToken = default)

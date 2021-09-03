@@ -52,7 +52,7 @@ namespace Qitar.Bus.RabbitMQ
 
         private async Task ConsumerMessage(object sender, BasicDeliverEventArgs message)
         {
-            var @event = await _serializer.DeserializeAsync<IEvent>(message.Body.ToArray(), default).ConfigureAwait(false);
+            var @event = await _serializer.Deserialize<IEvent>(message.Body.ToArray(), default).ConfigureAwait(false);
 
             await _eventPublisher.Publish(@event, default).ConfigureAwait(false);
         }

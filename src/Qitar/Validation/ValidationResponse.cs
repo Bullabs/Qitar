@@ -8,7 +8,7 @@
         public ValidationResponse(string error)
         {
             Error = error;
-            IsValid = (string.IsNullOrEmpty(error)) ? true : false;
+            IsValid = string.IsNullOrEmpty(error);
         }
     }
 }

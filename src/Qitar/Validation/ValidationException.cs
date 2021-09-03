@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Qitar.Validation
 {
@@ -15,6 +16,10 @@ namespace Qitar.Validation
 
         public ValidationException(string message, Exception innerException) : base(message, innerException)
         {
+        }
+        protected ValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+
         }
     }
 }

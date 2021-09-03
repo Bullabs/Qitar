@@ -38,7 +38,7 @@ namespace Qitar.Web.Exceptions
         {
             context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
             context.Response.ContentType = "application/json";
-            context.Response.Body = await _serializer.SerializeStreamAsync(exception, cancellationToken).ConfigureAwait(false);
+            context.Response.Body = await _serializer.SerializeStream(exception, cancellationToken).ConfigureAwait(false);
         }
     }
 }

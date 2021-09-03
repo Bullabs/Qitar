@@ -5,6 +5,6 @@ namespace Qitar.Jobs
 {
     public interface IJobRunner
     {
-        ValueTask Run(IJob job, CancellationToken cancellationToken);
+        ValueTask Run(IJob job, CancellationToken cancellationToken = default);
     }
 }

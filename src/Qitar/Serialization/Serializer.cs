@@ -51,10 +51,7 @@ namespace Qitar.Serialization
 
         public async ValueTask<TObject> Deserialize<TObject>(byte[] valueArray, CancellationToken cancellationToken)
         {
-            if (valueArray == null)
-            {
-                throw new ArgumentNullException("Deserialize byte array is null");
-            }
+            valueArray.NotNull();
 
             using var stream = new MemoryStream(valueArray);
             return await _provider.DeserializeAsync<TObject>(stream, cancellationToken).ConfigureAwait(false);

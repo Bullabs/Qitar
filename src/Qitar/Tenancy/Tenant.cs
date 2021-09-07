@@ -34,7 +34,7 @@ namespace Qitar.Tenancy
 
         public int GetHashCode(Tenant obj)
         {
-            throw new NotImplementedException();
+            return obj.Id.GetHashCode() ^ 31;
         }
     }
 }

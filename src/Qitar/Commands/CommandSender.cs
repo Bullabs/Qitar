@@ -24,7 +24,7 @@ namespace Qitar.Commands
             where TCommand : ICommand
         {
             command.NotNull();
-
+            
             await _metrics.Counter(command, cancellationToken).ConfigureAwait(false);
 
             await _validation.Validate(command).ConfigureAwait(false);

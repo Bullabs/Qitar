@@ -22,13 +22,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Pack
       run: dotnet pack --configuration Release --output artifacts
     - name: Push
       run: dotnet nuget push artifacts/*.nupkg --no-symbols true --skip-duplicate
-
-    
-

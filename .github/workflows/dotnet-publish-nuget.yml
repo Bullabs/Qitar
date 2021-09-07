@@ -23,9 +23,7 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
     - name: Pack
       run: dotnet pack --configuration Release --output artifacts
     - name: Push
-      run: dotnet nuget push artifacts/*.nupkg --no-symbols true --api-key $NUGET_AUTH_TOKEN --skip-duplicate
+      run: dotnet nuget push artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --no-symbols true --api-key ${{secrets.NUGET_API_KEY}} --skip-duplicate

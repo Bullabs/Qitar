@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Qitar.Tenancy
 {
-    public class Tenant: IComparable<Tenant>, IEquatable<Tenant>
+    public class Tenant: IComparable<Tenant>, IEquatable<Tenant>, IEqualityComparer<Tenant>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -25,6 +26,15 @@ namespace Qitar.Tenancy
             if (other == null) return false;
             return ReferenceEquals(this, other) || Id.Equals(other.Id);
         }
-    }
 
+        public bool Equals(Tenant x, Tenant y)
+        {
+            return ReferenceEquals(x, y) || x.Id.Equals(y.Id);
+        }
+
+        public int GetHashCode(Tenant obj)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

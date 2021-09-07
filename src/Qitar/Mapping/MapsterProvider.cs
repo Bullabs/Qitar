@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using Qitar.Utils;
 using System;
+using System.Threading.Tasks;
 
 namespace Qitar.Mapping
 {
@@ -19,9 +20,9 @@ namespace Qitar.Mapping
             return _mapper.Map(obj, source, destination);
         }
 
-        public T Map<T>(object obj)
+        public async ValueTask<T> Map<T>(object obj)
         {
-            return _mapper.Map<T>(obj);
+            return await _mapper.From(obj).AdaptToTypeAsync<T>().ConfigureAwait(false);
         }
     }
 }

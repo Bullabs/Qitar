@@ -1,22 +1,20 @@
 ﻿using Qitar.Events;
 using Qitar.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Qitar.Utils;
 using System.Threading.Tasks;
 
 namespace Qitar.Store.Entities.Factories
 {
-    public class EventEntityFactory : IEventEntityFactory
+    public class EventEntityFactory : IEntityFactory<IEvent, EventEntity>
     {
         private readonly ISerializer _serializer;
 
         public EventEntityFactory(ISerializer serializer )
         {
-            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+            _serializer = serializer.NotNull();
         }
 
-        public async ValueTask<EventEntity> CreateEventAsync(IEvent obj)
+        public async ValueTask<EventEntity> CreateEntity(IEvent obj)
         {
             return new EventEntity
             {
@@ -26,7 +24,6 @@ namespace Qitar.Store.Entities.Factories
                 //Payload = await _serializer.Serialize(obj).ConfigureAwait(false),
 
             };
-
         }
     }
 }

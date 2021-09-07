@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Qitar.Mapping
 {
@@ -17,7 +18,7 @@ namespace Qitar.Mapping
             return _mappingProvider.Map(obj, type, type);
         }
 
-        public T Map<T>(object obj)
+        public ValueTask<T> Map<T>(object obj)
         {
             return _mappingProvider.Map<T>(obj);
         }

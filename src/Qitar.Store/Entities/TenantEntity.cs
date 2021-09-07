@@ -1,4 +1,5 @@
 ﻿using Qitar.Entities;
+
 namespace Qitar.Store.Entities
 {
     public class TenantEntity : Entity

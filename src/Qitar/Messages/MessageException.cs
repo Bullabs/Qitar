@@ -20,7 +20,6 @@ namespace Qitar.Messages
 
         protected MessageException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
-
         }
     }
 }

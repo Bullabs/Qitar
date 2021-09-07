@@ -10,6 +10,5 @@ namespace Qitar.Store.Entities
         public string Payload { get; set; }
         public DateTime TimeStamp { get; set; }
         public string User { get; set; }
-
     }
 }

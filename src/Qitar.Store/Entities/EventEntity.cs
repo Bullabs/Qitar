@@ -9,7 +9,7 @@ namespace Qitar.Store.Entities
         public string EventType { get; set; }
         public string Payload { get; set; }
         public DateTime TimeStamp { get; set; }
-        string User { get; set; }
+        public string User { get; set; }
 
     }
 }

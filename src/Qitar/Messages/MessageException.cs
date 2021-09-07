@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace Qitar.Messages
 {
+    [Serializable]
     public class MessageException: Exception
     {
         public MessageException() : base()

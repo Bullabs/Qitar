@@ -1,16 +1,16 @@
 ﻿using Mapster;
+using Qitar.Utils;
 using System;
 
 namespace Qitar.Mapping
 {
     public class MapsterProvider : IMappingProvider
     {
-        private readonly TypeAdapterConfig _typeAdapterConfig;
         private readonly MapsterMapper.IMapper _mapper;
 
         public MapsterProvider(TypeAdapterConfig typeAdapterConfig)
         {
-            _typeAdapterConfig = typeAdapterConfig ?? throw new ArgumentNullException(nameof(typeAdapterConfig));
+            typeAdapterConfig.NotNull();
             _mapper = new MapsterMapper.Mapper(typeAdapterConfig);
         }
 

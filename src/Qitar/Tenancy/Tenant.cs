@@ -25,14 +25,9 @@ namespace Qitar.Tenancy
         }
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Tenant tenant)) return false;
+            if (obj == null || obj is not Tenant tenant) return false;
 
             return ReferenceEquals(this, tenant) || Id.Equals(tenant.Id);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
         }
     }
 

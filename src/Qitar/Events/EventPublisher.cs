@@ -18,6 +18,7 @@ namespace Qitar.Events
         {
             _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
             _bus = bus ?? throw new ArgumentNullException(nameof(bus));
+            _metrics = metrics ?? throw new ArgumentNullException(nameof(metrics));
         }
 
         public async ValueTask Publish<TEvent>(IEnumerable<TEvent> events, CancellationToken cancellationToken = default) where TEvent : IEvent

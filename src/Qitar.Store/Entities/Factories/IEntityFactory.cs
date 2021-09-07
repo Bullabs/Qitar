@@ -1,10 +1,11 @@
 ﻿using Qitar.Entities;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Qitar.Store.Entities.Factories
 {
     public interface IEntityFactory<TSource, TDestination> where TDestination : Entity
     {
-        ValueTask<TDestination> CreateEntity(TSource obj);
+        ValueTask<TDestination> CreateEntity(TSource obj, CancellationToken cancellationToken = default);
     }
 }

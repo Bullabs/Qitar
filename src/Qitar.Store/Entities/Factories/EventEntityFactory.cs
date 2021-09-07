@@ -1,6 +1,7 @@
 ﻿using Qitar.Events;
 using Qitar.Serialization;
 using Qitar.Utils;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Qitar.Store.Entities.Factories
@@ -14,15 +15,14 @@ namespace Qitar.Store.Entities.Factories
             _serializer = serializer.NotNull();
         }
 
-        public async ValueTask<EventEntity> CreateEntity(IEvent obj)
+        public async ValueTask<EventEntity> CreateEntity(IEvent obj, CancellationToken cancellationToken = default)
         {
             return new EventEntity
             {
                 Id = obj.StreamId,
                 Version = 0, // update
                 EventType = obj.GetType().AssemblyQualifiedName,
-                //Payload = await _serializer.Serialize(obj).ConfigureAwait(false),
-
+                Payload = await _serializer.Serialize(obj, cancellationToken).ConfigureAwait(false),
             };
         }
     }

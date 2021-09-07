@@ -16,7 +16,7 @@ namespace Qitar.Store.Entities.Factories
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
-        public async Task<EventEntity> CreateEventAsync(IEvent obj)
+        public async ValueTask<EventEntity> CreateEventAsync(IEvent obj)
         {
             return new EventEntity
             {

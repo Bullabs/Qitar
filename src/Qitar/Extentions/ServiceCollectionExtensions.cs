@@ -6,6 +6,7 @@ using Qitar.Commands;
 using Qitar.Cryptography;
 using Qitar.Events;
 using Qitar.Jobs;
+using Qitar.Mapping;
 using Qitar.Messages;
 using Qitar.Queries;
 using Qitar.Serialization;
@@ -114,6 +115,8 @@ namespace Qitar
             }
 
             services.AddSingleton(config);
+            services.AddSingleton<IMappingProvider, MapsterProvider>();
+            services.AddSingleton<IMapper, Mapper>();
 
             return services;
         }

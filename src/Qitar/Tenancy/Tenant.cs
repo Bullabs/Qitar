@@ -2,7 +2,7 @@
 
 namespace Qitar.Tenancy
 {
-    public class Tenant
+    public class Tenant: IComparable<Tenant>, IEquatable<Tenant>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -14,20 +14,16 @@ namespace Qitar.Tenancy
         {
             return $"[{Name} : {Id}]";
         }
-        public static bool operator ==(Tenant left, Tenant right)
+
+        public int CompareTo(Tenant other)
         {
-            return Equals(left, right);
+            return Equals(other)? 1:0;
         }
 
-        public static bool operator !=(Tenant left, Tenant right)
+        public bool Equals(Tenant other)
         {
-            return !(left == right);
-        }
-        public override bool Equals(object obj)
-        {
-            if (obj == null || obj is not Tenant tenant) return false;
-
-            return ReferenceEquals(this, tenant) || Id.Equals(tenant.Id);
+            if (other == null) return false;
+            return ReferenceEquals(this, other) || Id.Equals(other.Id);
         }
     }
 

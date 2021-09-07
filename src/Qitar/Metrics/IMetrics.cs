@@ -12,7 +12,5 @@ namespace Qitar.Metrics
         ValueTask Gauge(string name, double value, CancellationToken cancellationToken = default);
         ValueTask Timer(string name, TimeSpan Time, CancellationToken cancellationToken = default);
         ValueTask GetCounterStats(string name, DateTime? utcStart = null, DateTime? utcEnd = null, int dataPoints = 20, CancellationToken cancellationToken = default);
-        //ValueTask GetCounterStats(string name, DateTime? utcStart = null, DateTime? utcEnd = null, int dataPoints = 20, CancellationToken cancellationToken = default);
-       // ValueTask GetCounterStats(string name, DateTime? utcStart = null, DateTime? utcEnd = null, int dataPoints = 20, CancellationToken cancellationToken = default);
     }
 }

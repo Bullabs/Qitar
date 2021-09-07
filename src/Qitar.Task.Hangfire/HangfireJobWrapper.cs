@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Qitar.Task.Hangfire
 {
-    class HangfireJobWrapper
+    public class HangfireJobWrapper
     {
         private readonly IJobRunner _jobRunner;
 

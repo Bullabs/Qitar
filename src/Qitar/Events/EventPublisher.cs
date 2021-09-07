@@ -1,5 +1,6 @@
 ﻿using Qitar.Bus;
 using Qitar.Dependencies;
+using Qitar.Metrics;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -11,11 +12,13 @@ namespace Qitar.Events
     {
         private readonly IResolver _resolver;
         private readonly IBus _bus;
+        private readonly IMetrics _metrics;
 
-        public EventPublisher(IResolver resolver, IBus bus)
+        public EventPublisher(IResolver resolver, IBus bus, IMetrics metrics)
         {
             _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
             _bus = bus ?? throw new ArgumentNullException(nameof(bus));
+            _metrics = metrics ?? throw new ArgumentNullException(nameof(metrics));
         }
 
         public async ValueTask Publish<TEvent>(IEnumerable<TEvent> events, CancellationToken cancellationToken = default) where TEvent : IEvent
@@ -28,6 +31,8 @@ namespace Qitar.Events
 
         public async ValueTask Publish<TEvent>(TEvent @event, CancellationToken cancellationToken = default) where TEvent : IEvent
         {
+            await _metrics.Counter(@event, cancellationToken).ConfigureAwait(false);
+
             var handlers = _resolver.ResolveAll<IEventHandler<TEvent>>();
 
             foreach (var handler in handlers)

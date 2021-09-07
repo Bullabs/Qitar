@@ -68,9 +68,11 @@ namespace Qitar.Serialization
         {
             obj.NotNull();
 
-            using var stream = new MemoryStream();
-            await _provider.SerializeAsync(stream, obj, cancellationToken);
-            return stream;
+            using (var stream = new MemoryStream())
+            {
+                await _provider.SerializeAsync(stream, obj, cancellationToken).ConfigureAwait(false);
+                return stream;
+            }
         }
     }
 }

@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Bus.Kafka", "src\Qita
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Web", "src\Qitar.Web\Qitar.Web.csproj", "{795CDF0D-87E1-428A-AC50-7E2FAAAD9C18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Caching.DistributedCache.Redis", "src\Qitar.Caching.DistributedCache.Redis\Qitar.Caching.DistributedCache.Redis.csproj", "{141696C6-3AEA-4C87-8D89-01B2198023F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Caching.DistributedCache.Redis", "src\Qitar.Caching.DistributedCache.Redis\Qitar.Caching.DistributedCache.Redis.csproj", "{141696C6-3AEA-4C87-8D89-01B2198023F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Validation.FluentValidation", "src\Qitar.Validation.FluentValidation\Qitar.Validation.FluentValidation.csproj", "{DD99C4D4-E77D-472C-B0D4-924767E7592E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Validation.FluentValidation", "src\Qitar.Validation.FluentValidation\Qitar.Validation.FluentValidation.csproj", "{DD99C4D4-E77D-472C-B0D4-924767E7592E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Store", "src\Qitar.Store\Qitar.Store.csproj", "{6598F637-C5BA-4615-A65A-18A9AF9C891A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{DD99C4D4-E77D-472C-B0D4-924767E7592E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD99C4D4-E77D-472C-B0D4-924767E7592E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD99C4D4-E77D-472C-B0D4-924767E7592E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6598F637-C5BA-4615-A65A-18A9AF9C891A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6598F637-C5BA-4615-A65A-18A9AF9C891A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6598F637-C5BA-4615-A65A-18A9AF9C891A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6598F637-C5BA-4615-A65A-18A9AF9C891A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

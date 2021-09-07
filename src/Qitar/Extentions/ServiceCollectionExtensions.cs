@@ -3,9 +3,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Qitar.Caching;
 using Qitar.Commands;
+using Qitar.Cryptography;
 using Qitar.Events;
+using Qitar.Jobs;
+using Qitar.Mapping;
+using Qitar.Messages;
 using Qitar.Queries;
 using Qitar.Serialization;
+using Qitar.Utils.System;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +30,15 @@ namespace Qitar
             services.Scan(s => s.FromAssembliesOf(typeList)
                .AddClasses()
                .AsImplementedInterfaces());
+
+            services
+                .AddMapping(typeList)
+                .AddSerializer()
+                .AddCaching()
+                .AddJobs()
+                .AddCryptography()
+                .AddSystemInfo();
             
-            services.AddMapping(typeList).AddSerializer().AddCaching();
             return services;
         }
 
@@ -55,6 +67,28 @@ namespace Qitar
             return services;
         }
 
+        private static IServiceCollection AddCryptography(this IServiceCollection services)
+        {
+            services.AddSingleton<IEncryptor, Encryptor>();
+            services.AddSingleton<IHasher, Hasher>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddSystemInfo(this IServiceCollection services)
+        {
+            services.AddSingleton<ISystemInfo, SystemInfo>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddJobs(this IServiceCollection services)
+        {
+            services.AddSingleton<IJobRunner, JobRunner>();
+
+            return services;
+        }
+
         private static IServiceCollection AddMapping(this IServiceCollection services, IEnumerable<Type> types)
         {
 
@@ -70,6 +104,7 @@ namespace Qitar
                 var typesToMap = type.Assembly.GetTypes().Where(t => t.GetTypeInfo().IsClass && !t.GetTypeInfo().IsAbstract && (
                         typeof(ICommand).IsAssignableFrom(t) ||
                         typeof(IEvent).IsAssignableFrom(t) ||
+                        typeof(IMessage).IsAssignableFrom(t) ||
                         typeof(IQuery<>).IsAssignableFrom(t)))
                         .ToList();
 
@@ -80,6 +115,8 @@ namespace Qitar
             }
 
             services.AddSingleton(config);
+            services.AddSingleton<IMappingProvider, MapsterProvider>();
+            services.AddSingleton<IMapper, Mapper>();
 
             return services;
         }

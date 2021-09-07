@@ -1,6 +1,5 @@
 ﻿using Hangfire;
 using Qitar.Jobs;
-using Qitar.Objects.Responses;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,7 +43,7 @@ namespace Qitar.Task.Hangfire
         {
             var id = _backgroundJobClient.Schedule<HangfireJobWrapper>(j => j.Excute(job, cancellationToken).ConfigureAwait(false), delay);
 
-            return default;
+            return new ValueTask<IJobId>(new HangfireJobId(id));
         }
 
         public ValueTask UpdateRecurringJob(IJob job, string cronExpression, CancellationToken cancellationToken = default)

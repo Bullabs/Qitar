@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Qitar.Cryptography
 {
-    public class Encryptor : IEncryptor
+    internal sealed class Encryptor : IEncryptor
     {
         public async ValueTask<string> Decrypt(string data, string key, CancellationToken cancellationToken = default)
         {

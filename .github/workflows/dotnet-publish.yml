@@ -22,7 +22,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build --no-restore
     - name: Pack
       run: dotnet pack --configuration Release --output artifacts
     - name: Push

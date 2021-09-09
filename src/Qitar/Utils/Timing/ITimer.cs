@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Qitar.Utils.Timer
+namespace Qitar.Utils.Timing
 {
     public interface ITimer
     {

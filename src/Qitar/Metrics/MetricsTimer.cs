@@ -1,4 +1,4 @@
-﻿using Qitar.Utils;
+using Qitar.Utils;
 using Qitar.Utils.Timing;
 using System;
 using System.Diagnostics;

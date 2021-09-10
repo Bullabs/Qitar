@@ -3,6 +3,12 @@
     <img src="https://raw.githubusercontent.com/Bullabs/Qitar/main/assets/logo/logo.png">
   </a>
 </p>
+<br>
+![Nuget](https://img.shields.io/nuget/v/Qitar?style=plastic)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Bullabs_Qitar&metric=security_rating)](https://sonarcloud.io/dashboard?id=Bullabs_Qitar)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Bullabs_Qitar&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Bullabs_Qitar)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Bullabs_Qitar&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Bullabs_Qitar)
+
 
 ## 🚆 Introduction
 

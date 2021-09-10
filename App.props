@@ -1,8 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   
   <PropertyGroup>
-    <Version>0.1.5</Version>
-    <PackageVersion>0.1.5</PackageVersion>
+    <Version>0.1.6</Version>
+    <PackageVersion>0.1.6</PackageVersion>
 
     <Product>Qitar</Product>
     <Description>Qitar is a framework for building high-performance applications</Description>

@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../../App.props" />
+
+  <PropertyGroup>
+    <PackageId>Qitar.Store.EntityFramework</PackageId>
+  </PropertyGroup>
+  
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>

@@ -11,6 +11,7 @@
     <Copyright>Copyright 2021 Bullabs</Copyright>
     <RepositoryUrl>https://github.com/Bullabs/Qitar</RepositoryUrl>
     <PackageProjectUrl>https://github.com/bullabs/Qitar</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageLicense>Apache-2.0</PackageLicense>
     <PackageLicenseUrl>https://github.com/Bullabs/Qitar/blob/master/LICENSE</PackageLicenseUrl>
@@ -22,5 +23,8 @@
     <LangVersion>9</LangVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>  
-  </PropertyGroup>  
+  </PropertyGroup>
+  <ItemGroup>
+      <None Include="..\..\assets\logo\logo.png" Pack="true" PackagePath=""/>
+  </ItemGroup>  
 </Project>

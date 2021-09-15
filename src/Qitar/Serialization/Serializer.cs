@@ -21,9 +21,17 @@ namespace Qitar.Serialization
             value.NotNull();
             type.NotNull();
 
-            using var stream = new MemoryStream(Encoding.UTF8.GetBytes(value));
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(value));
 
-            return await _provider.DeserializeAsync(stream, type, cancellationToken).ConfigureAwait(false);
+            try
+            {
+                return await _provider.DeserializeAsync(stream, type, cancellationToken).ConfigureAwait(false);
+            }
+            finally
+            {
+                await stream.FlushAsync(cancellationToken).ConfigureAwait(false);
+                await stream.DisposeAsync().ConfigureAwait(false);
+            }
         }
 
         public async ValueTask<TObject> Deserialize<TObject>(string value, CancellationToken cancellationToken)

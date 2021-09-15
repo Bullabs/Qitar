@@ -53,8 +53,17 @@ namespace Qitar.Serialization
         {
             valueArray.NotNull();
 
-            using var stream = new MemoryStream(valueArray);
-            return await _provider.DeserializeAsync<TObject>(stream, cancellationToken).ConfigureAwait(false);
+            var stream = new MemoryStream(valueArray);
+
+            try
+            {
+                return await _provider.DeserializeAsync<TObject>(stream, cancellationToken).ConfigureAwait(false);
+            }
+            finally
+            {
+                await stream.FlushAsync(cancellationToken).ConfigureAwait(false);
+                await stream.DisposeAsync().ConfigureAwait(false);
+            }
         }
 
         public async ValueTask<string> Serialize<TObject>(TObject obj, CancellationToken cancellationToken)
@@ -68,10 +77,17 @@ namespace Qitar.Serialization
         {
             obj.NotNull();
 
-            using (var stream = new MemoryStream())
+            var stream = new MemoryStream();
+
+            try
             {
                 await _provider.SerializeAsync(stream, obj, cancellationToken).ConfigureAwait(false);
                 return stream;
+            }
+            finally
+            {
+                await stream.FlushAsync(cancellationToken).ConfigureAwait(false);
+                await stream.DisposeAsync().ConfigureAwait(false);
             }
         }
     }

@@ -6,7 +6,7 @@ namespace Qitar.Messages
 {
     public interface IMessageHandler<in TMessage, TResponse> where TMessage : IMessage where TResponse : IResponse
     {
-        ValueTask Handle(TMessage Message, CancellationToken cancellationToken = default);
+        ValueTask<IResponse> Handle(TMessage Message, CancellationToken cancellationToken = default);
     }
     public interface IMessageHandler<in TMessage> where TMessage : IMessage
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Qitar.Store.Entities.Factories
 {
-    public class TenantEntityFactory : IEntityFactory<Tenant,TenantEntity>
+    public class TenantEntityFactory : IEntityFactory<TenantInfo,TenantEntity>
     {
         private readonly IMapper _mapper;
 
@@ -15,7 +15,7 @@ namespace Qitar.Store.Entities.Factories
             _mapper = mapper.NotNull();
         }
 
-        public async ValueTask<TenantEntity> CreateEntity(Tenant obj, CancellationToken cancellationToken = default)
+        public async ValueTask<TenantEntity> CreateEntity(TenantInfo obj, CancellationToken cancellationToken = default)
         {
             return await _mapper.Map<TenantEntity>(obj).ConfigureAwait(false);
         }

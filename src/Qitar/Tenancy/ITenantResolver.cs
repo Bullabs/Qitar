@@ -5,6 +5,6 @@ namespace Qitar.Tenancy
 {
     public interface ITenantResolver
     {
-        ValueTask<ITenantInfo> Resolve(object context, CancellationToken cancellationToken = default);
+        ValueTask<ITenant> Resolve(object context, CancellationToken cancellationToken = default);
     }
 }

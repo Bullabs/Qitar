@@ -1,8 +1,6 @@
-﻿using Qitar.Entities;
-
-namespace Qitar.Tenancy
+﻿namespace Qitar.Tenancy
 {
-    public interface ITenantInfo : IEntity
+    public interface ITenant
     {
         public string Identifier { get; set; }
         public string Name { get; set; }

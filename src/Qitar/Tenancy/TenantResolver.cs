@@ -22,9 +22,9 @@ namespace Qitar.Tenancy
             _cache = cache.NotNull();
         }
 
-        public async ValueTask<ITenantInfo> Resolve(object context, CancellationToken cancellationToken = default)
+        public async ValueTask<ITenant> Resolve(object context, CancellationToken cancellationToken = default)
         {
-            ITenantInfo tenantInfo = null;
+            ITenant tenantInfo = null;
 
             foreach (var strategy in _strategies)
             {
@@ -41,7 +41,7 @@ namespace Qitar.Tenancy
             return tenantInfo;
         }
 
-        private Func<ValueTask<ITenantInfo>> GetTenante(ITenantStore store, string identfier, CancellationToken cancellationToken)
+        private Func<ValueTask<ITenant>> GetTenante(ITenantStore store, string identfier, CancellationToken cancellationToken)
         {
             return async () =>
             {
@@ -49,4 +49,4 @@ namespace Qitar.Tenancy
             };
         }
     }
-}s
+}

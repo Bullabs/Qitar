@@ -24,6 +24,8 @@ namespace Qitar.Tenancy
 
         public async ValueTask<ITenant> Resolve(object context, CancellationToken cancellationToken = default)
         {
+            context.NotNull();
+
             ITenant tenantInfo = null;
 
             foreach (var strategy in _strategies)

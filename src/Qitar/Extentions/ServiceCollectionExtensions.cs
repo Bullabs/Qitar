@@ -10,6 +10,8 @@ using Qitar.Mapping;
 using Qitar.Messages;
 using Qitar.Queries;
 using Qitar.Serialization;
+using Qitar.Tenancy;
+using Qitar.Tenancy.Store;
 using Qitar.Utils.System;
 using System;
 using System.Collections.Generic;
@@ -71,6 +73,15 @@ namespace Qitar
         {
             services.AddSingleton<IEncryptor, Encryptor>();
             services.AddSingleton<IHasher, Hasher>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddTenancy(this IServiceCollection services)
+        {
+            services.AddScoped<ICurrentTenant, CurrentTenant>();
+            services.AddScoped<ITenantResolver, TenantResolver>();
+            services.AddScoped<ITenantStore, TenantStore>();
 
             return services;
         }

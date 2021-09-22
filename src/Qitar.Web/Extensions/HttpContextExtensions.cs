@@ -8,5 +8,10 @@ namespace Qitar.Web.Extensions
         {
             return httpResponse.StatusCode < StatusCodes.Status400BadRequest;
         }
+
+        public static void SetTenantInfo<T>(this HttpContext httpContext, T tenantInfo)
+        {
+
+        }
     }
 }

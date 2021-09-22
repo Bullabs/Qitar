@@ -5,6 +5,11 @@ namespace Qitar.Utils
 {
     public static class Extentions
     {
+        public static bool HasValue<T>(this T value)
+        {
+            return value != null;
+        }
+
         public static T NotNull<T>(this T value)
         {
             if (value == null)

@@ -1,11 +1,15 @@
-﻿namespace Qitar.Tenancy
+﻿using System;
+
+namespace Qitar.Tenancy
 {
     public interface ITenant
     {
-        public string Identifier { get; set; }
-        public string Name { get; set; }
-        public string ConnectionString { get; set; }
-        public string Culture { get; set; }
-        public string TimeZone { get; set; }
+        public Guid? Id {  get;}
+        public string Identifier { get; }
+        public string Name { get;}
+        public string ConnectionString { get;}
+        public int ConnectionType { get;}
+        public string Culture { get;}
+        public string TimeZone { get;}
     }
 }

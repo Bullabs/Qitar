@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Qitar.Web.Tenancy.Strategies
 {
-    public class BasePathStrategy : ITenantStrategy
+    public class HostStrategy : ITenantStrategy
     {
         public ValueTask<string> GetIdentifier(object context, CancellationToken cancellationToken = default)
         {
@@ -16,16 +16,10 @@ namespace Qitar.Web.Tenancy.Strategies
                     new ArgumentException($"\"{nameof(context)}\" type must be of type HttpContext", nameof(context)));
             }
 
-            var path = httpContext.Request.Path;
+            var host = httpContext.Request.Host;
 
-            var pathSegments = path.Value.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            return new ValueTask<string>(host.Value);
 
-            if (pathSegments.Length == 0)
-            {
-                return new ValueTask<string>(string.Empty);
-            }
-
-            return new ValueTask<string>(pathSegments[0]);
         }
     }
 }

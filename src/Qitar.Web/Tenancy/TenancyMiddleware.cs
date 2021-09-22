@@ -17,12 +17,12 @@ namespace Qitar.Web.Tenancy
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
-            var tenateContext = context.RequestServices.GetRequiredService<ITenantContext>();
+            var accessor = context.RequestServices.GetRequiredService<ICurrentTenantAccessor>();
 
-            if(tenateContext.CurrentTenant == null)
+            if (accessor.CurrentTenant == null)
             {
                 var tenate = await _tenantResolver.Resolve(context).ConfigureAwait(false);
-                tenateContext.CurrentTenant = tenate;
+                accessor.CurrentTenant = tenate;
             }
 
             await next.Invoke(context).ConfigureAwait(false);

@@ -17,7 +17,7 @@ namespace Qitar.Web.Tenancy.Strategies
 
         public ValueTask<string> GetIdentifier(object context, CancellationToken cancellationToken = default)
         {
-            if (!(context is HttpContext httpContext))
+            if (context is not HttpContext httpContext)
             {
                 throw new TenancyException(this.GetType().Name, 
                     new ArgumentException($"\"{nameof(context)}\" type must be of type HttpContext", nameof(context)));

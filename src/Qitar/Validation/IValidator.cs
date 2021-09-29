@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Qitar.Validation
 {
-    public interface IValidation
+    public interface IValidator
     {
         ValueTask Validate<TCommand>(TCommand command, CancellationToken canclationToken = default) where TCommand : ICommand;
     }

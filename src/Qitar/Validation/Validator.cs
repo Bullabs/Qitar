@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Qitar.Validation
 {
-    public class Validation : IValidation
+    public class Validation : IValidator
     {
         private readonly IValidationProvider _validationProvider;
 

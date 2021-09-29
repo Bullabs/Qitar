@@ -5,6 +5,6 @@ namespace Qitar.Tenancy.Store
 {
     public interface ITenantStoreProvider
     {
-        ValueTask<TenantConfiguration> GetById(object id, CancellationToken cancellationToken = default);
+        ValueTask<ITenant> GetById(object id, CancellationToken cancellationToken = default);
     }
 }

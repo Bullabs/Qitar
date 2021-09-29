@@ -26,6 +26,23 @@ Qitar is a Domain Driven Design oriented application framework.
 
 <br>
 
+## :books: Useful Resources
+
+#### Domain-Driven Design
+
+ - [Domain-Driven Design Reference](https://domainlanguage.com/ddd/reference/) by Eric Evans
+ #### CQRS & Event sourcing
+
+ - [CQRS Journey by Microsoft](https://msdn.microsoft.com/en-us/library/jj554200.aspx)
+   published by Microsoft
+ - [An In-Depth Look At CQRS](https://blog.sapiensworks.com/post/2015/09/01/In-Depth-CQRS)
+   by Mike Mogosanu
+ - [Busting some CQRS myths](https://lostechies.com/jimmybogard/2012/08/22/busting-some-cqrs-myths/)
+   by Jimmy Bogard
+ - [CQRS applied](https://lostechies.com/gabrielschenker/2015/04/12/cqrs-applied/)
+   by Gabriel Schenker
+<br>
+
 ## 🤔 Community Help
 
 <br>

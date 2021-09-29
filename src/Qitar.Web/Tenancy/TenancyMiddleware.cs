@@ -1,14 +1,31 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
+using Microsoft.Extensions.DependencyInjection;
+using Qitar.Tenancy;
+using Qitar.Utils;
 using System.Threading.Tasks;
 
 namespace Qitar.Web.Tenancy
 {
-    public class TenancyMiddleware : IMiddleware
+    internal class TenancyMiddleware : IMiddleware
     {
-        public Task InvokeAsync(HttpContext context, RequestDelegate next)
+        private readonly ITenantResolver _tenantResolver;
+
+        public TenancyMiddleware(ITenantResolver tenantResolver)
         {
-            throw new NotImplementedException();
+            _tenantResolver = tenantResolver.NotNull();
+        }
+
+        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+        {
+            var accessor = context.RequestServices.GetRequiredService<ICurrentTenantAccessor>();
+
+            if (accessor.CurrentTenant == null)
+            {
+                var tenate = await _tenantResolver.Resolve(context).ConfigureAwait(false);
+                accessor.CurrentTenant = tenate;
+            }
+
+            await next.Invoke(context).ConfigureAwait(false);
         }
     }
 }

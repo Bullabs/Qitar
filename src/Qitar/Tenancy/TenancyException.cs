@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Qitar.Tenancy
 {
+    [Serializable]
     public class TenancyException : Exception
     {
         public TenancyException(string errorMessage) : base(errorMessage)

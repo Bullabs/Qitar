@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Qitar.Permissions
 {
+    [Serializable]
     public class PermissionValidationException : Exception
     {
         public PermissionValidationException(string errorMessage) : base(errorMessage)

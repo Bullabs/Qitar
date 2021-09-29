@@ -37,7 +37,10 @@ namespace Qitar.Tenancy
                     tenantInfo = await _cache.GetOrSet($"tenant-{identfier}", GetTenante(_store, identfier, cancellationToken)).ConfigureAwait(false);
                 }
 
-                break;
+                if(tenantInfo is not null)
+                {
+                    break;
+                }
             }
 
             return tenantInfo;

@@ -6,6 +6,6 @@ namespace Qitar.Validation
 {
     public interface IValidationProvider
     {
-        ValueTask<IValidationResponse> Validate<TCommand>(TCommand command, CancellationToken canclationToken = default) where TCommand : ICommand;
+        ValueTask<IValidationResult> Validate<TCommand>(TCommand command, CancellationToken canclationToken = default) where TCommand : ICommand;
     }
 }

@@ -3,7 +3,7 @@ using System;
 
 namespace Qitar.Jobs
 {
-    public class JobResult: IResponse
+    public class JobResult: IResult
     {
         public bool IsCancelled { get; set; }
         public Exception Error { get; set; }

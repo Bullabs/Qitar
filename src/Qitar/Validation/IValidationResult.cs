@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Qitar.Validation
 {
-    public interface IValidationResponse: IResponse
+    public interface IValidationResult: IResult
     {
         string Error { get; set;}
         bool IsValid { get; set; }

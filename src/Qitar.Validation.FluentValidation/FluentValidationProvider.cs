@@ -17,7 +17,7 @@ namespace Qitar.Validation.FluentValidation
             _resolveHandler = resolveHandler ?? throw new ArgumentNullException(nameof(resolveHandler));
         }
 
-        public async  ValueTask<IValidationResponse> Validate<TCommand>(TCommand command, CancellationToken canclationToken = default) where TCommand : ICommand
+        public async  ValueTask<IValidationResult> Validate<TCommand>(TCommand command, CancellationToken canclationToken = default) where TCommand : ICommand
         {
             var validator = _resolveHandler.ResolveHandler<IValidator<TCommand>>();
 
@@ -29,7 +29,7 @@ namespace Qitar.Validation.FluentValidation
             var validationResult = await validator.ValidateAsync(command).ConfigureAwait(false);
 
             var errors = string.Concat(validationResult.Errors.Select(s => $"{s.ErrorCode}-{s.ErrorMessage};"));
-            return new ValidationResponse(errors);
+            return new ValidationResult(errors);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Qitar.Dependencies;
+using Qitar.Logging;
 using Qitar.Metrics;
 using Qitar.Utils;
 using System;
@@ -7,22 +8,26 @@ using System.Threading.Tasks;
 
 namespace Qitar.Commands
 {
-    public class CommandSender : ICommandSender
+    public class CommandCoordinator : ICommandCoordinator
     {
         private readonly IResolveHandler _resolveHandler;
         private readonly ICommandValidator _validation;
         private readonly IMetrics _metrics;
+        readonly ILogger _logger;
 
-        public CommandSender(IResolveHandler resolveHandler, ICommandValidator validation, IMetrics metrics)
+        public CommandCoordinator(IResolveHandler resolveHandler, ICommandValidator validation, IMetrics metrics, ILogger logger)
         {
-            _resolveHandler = resolveHandler ?? throw new ArgumentNullException(nameof(resolveHandler));
-            _validation = validation ?? throw new ArgumentNullException(nameof(validation));
-            _metrics = metrics ?? throw new ArgumentNullException(nameof(metrics));
+            _resolveHandler = resolveHandler.NotNull();
+            _validation = validation.NotNull();
+            _metrics = metrics.NotNull();
+            _logger = logger.NotNull();
         }
 
-        public async  ValueTask Send<TCommand>(TCommand command, CancellationToken cancellationToken = default)
+        public async  ValueTask Process<TCommand>(TCommand command, CancellationToken cancellationToken = default)
             where TCommand : ICommand
         {
+            _logger.Information("Handle command");
+
             command.NotNull();
             
             await _metrics.Counter(command, cancellationToken).ConfigureAwait(false);
@@ -30,7 +35,8 @@ namespace Qitar.Commands
             await _validation.Validate(command).ConfigureAwait(false);
 
             var handler = _resolveHandler.ResolveHandler<ICommandHandler<TCommand>>();
-            await handler.Handle(command).ConfigureAwait(false);
+
+            await handler.Handle(command,cancellationToken).ConfigureAwait(false);
         }
     }
 }

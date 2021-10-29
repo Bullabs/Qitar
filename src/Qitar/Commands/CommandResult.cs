@@ -1,5 +1,6 @@
 ﻿using Qitar.Events;
 using Qitar.Validation;
+using System;
 using System.Collections.Generic;
 
 namespace Qitar.Commands
@@ -10,6 +11,7 @@ namespace Qitar.Commands
         public string Message { get; set; }
         public IEnumerable<IEvent> Events { get; set; } 
         public IValidationResult ValidationResults { get; set; }
+        public Exception Exception { get; set; }
 
         public CommandResult(bool isSuccessful, string message, IEvent @event, ValidationResult validationResults) : this(isSuccessful, message, validationResults)
         {
@@ -29,6 +31,12 @@ namespace Qitar.Commands
             IsSuccessful = isSuccessful;
             Message = message;
             ValidationResults = validationResults;
+        }
+        public CommandResult(string message, Exception exception)
+        {
+            IsSuccessful = false;
+            Message = message;
+            Exception = exception;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Qitar.Objects.Responses;
-using System.Collections.Generic;
 
 namespace Qitar.Validation
 {

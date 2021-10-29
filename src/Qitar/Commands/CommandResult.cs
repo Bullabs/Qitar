@@ -1,5 +1,4 @@
 ﻿using Qitar.Events;
-using Qitar.Validation;
 using System;
 using System.Collections.Generic;
 
@@ -7,34 +6,32 @@ namespace Qitar.Commands
 {
     public class CommandResult: ICommandResult
     {
-        public bool IsSuccessful { get; set; }
+        public bool IsSuccessful
+        {
+            get { return null == Exception; }
+        }
+        public object Result { get; set; }
         public string Message { get; set; }
         public IEnumerable<IEvent> Events { get; set; } 
-        public IValidationResult ValidationResults { get; set; }
         public Exception Exception { get; set; }
 
-        public CommandResult(bool isSuccessful, string message, IEvent @event, ValidationResult validationResults) : this(isSuccessful, message, validationResults)
+        public CommandResult()
+        {
+
+        }
+        public CommandResult(object result)
+        {
+           Result = result;
+        }
+        public CommandResult(object result,IEvent @event) : this(result)
         {
             Events = new List<IEvent>()
             {
                 @event
             };
         }
-
-        public CommandResult(bool isSuccessful, string message, IEnumerable<IEvent> events, ValidationResult validationResults) : this(isSuccessful, message, validationResults)
-        {
-            Events = events;
-        }
-
-        public CommandResult(bool isSuccessful, string message, ValidationResult validationResults)
-        {
-            IsSuccessful = isSuccessful;
-            Message = message;
-            ValidationResults = validationResults;
-        }
         public CommandResult(string message, Exception exception)
         {
-            IsSuccessful = false;
             Message = message;
             Exception = exception;
         }

@@ -2,7 +2,7 @@
 
 namespace Qitar.Tenancy
 {
-    public class Tenant: ITenant
+    public record Tenant: ITenant
     {
         public Guid? Id { get; }
         public string Identifier { get; }

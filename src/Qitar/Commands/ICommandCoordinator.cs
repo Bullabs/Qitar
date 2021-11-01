@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using Qitar.Messages;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Qitar.Commands

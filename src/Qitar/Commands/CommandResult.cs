@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Qitar.Commands
 {
-    public class CommandResult: ICommandResult
+    public record CommandResult: ICommandResult
     {
         public bool IsSuccessful
         {

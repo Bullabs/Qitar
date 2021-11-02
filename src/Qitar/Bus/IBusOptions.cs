@@ -3,6 +3,6 @@
     public interface IBusOptions
     {
         string ConnectionString { get; set; }
-        string Topic { get; set; }
+        string TopicPrefix { get; set; }
     }
 }

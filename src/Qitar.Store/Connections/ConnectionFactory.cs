@@ -23,7 +23,7 @@ namespace Qitar.Store.Connections
                 ConnectionType.OracleConnection => new ValueTask<IDbConnection>(new OracleConnection(connectionString)),
                 ConnectionType.SQLiteConnection => new ValueTask<IDbConnection>(new SqliteConnection(connectionString)),
                 ConnectionType.SnowflakeDbConnection => new ValueTask<IDbConnection>(new SnowflakeDbConnection() { ConnectionString = connectionString }),
-                _ => new ValueTask<IDbConnection>(new SqlConnection(connectionString)),
+                _ => new ValueTask<IDbConnection>(new SqliteConnection(connectionString)),
             };
         }
     }

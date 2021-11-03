@@ -15,7 +15,6 @@ namespace Qitar.Web.Security
             AddHeaderIfNotExists(context, "X-Frame-Options", "SAMEORIGIN");
 
             await next.Invoke(context).ConfigureAwait(false);
-
         }
         private void AddHeaderIfNotExists(HttpContext context, string key, string value)
         {

@@ -56,6 +56,5 @@ namespace Qitar.Bus.RabbitMQ
 
             await _eventPublisher.Publish(@event, default).ConfigureAwait(false);
         }
-
     }
 }

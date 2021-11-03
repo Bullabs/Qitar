@@ -44,7 +44,6 @@ namespace Qitar
             return services;
         }
 
-
         private static IServiceCollection AddSerializer(this IServiceCollection services)
         {
             services.AddOptions<SerializerOptions>().Configure<IConfiguration>((settings, configuration) =>

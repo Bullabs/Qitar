@@ -29,7 +29,6 @@ namespace Qitar.Permissions
                     throw new PermissionValidationException();
                 }
             }
-
         }
     }
 }

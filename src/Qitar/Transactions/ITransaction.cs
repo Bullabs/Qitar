@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace Qitar.Lifecycle
+namespace Qitar.Transactions
 {
     public interface ITransaction : IDisposable
     {
-        ValueTask Commit();
-        ValueTask Rollback();
+        ValueTask Commit(CancellationToken cancellationToken = default);
+        ValueTask Rollback(CancellationToken cancellationToken = default);
     }
 }

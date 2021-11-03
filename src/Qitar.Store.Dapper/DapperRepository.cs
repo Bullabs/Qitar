@@ -49,7 +49,5 @@ namespace Qitar.Store.Dapper
 
             return await _dbConnection.UpdateAsync(entity).ConfigureAwait(false);
         }
-
     }
 }
-

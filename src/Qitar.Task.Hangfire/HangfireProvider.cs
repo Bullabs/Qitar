@@ -11,7 +11,6 @@ namespace Qitar.Task.Hangfire
         private readonly IBackgroundJobClient _backgroundJobClient;
         private readonly IRecurringJobManager _recurringJobManager;
 
-
         public HangfireProvider(IBackgroundJobClient backgroundJobClient, IRecurringJobManager recurringJobManager)
         {
             _backgroundJobClient = backgroundJobClient ?? throw new ArgumentNullException(nameof(backgroundJobClient));
@@ -27,7 +26,7 @@ namespace Qitar.Task.Hangfire
 
         public ValueTask DeleteJob(IJobId jobId, CancellationToken cancellationToken = default)
         {
-            _backgroundJobClient.Delete(jobId.Id.ToString()) ;
+            _backgroundJobClient.Delete(jobId.Id.ToString());
 
             return default;
         }

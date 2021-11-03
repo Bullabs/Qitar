@@ -15,14 +15,13 @@ namespace Qitar.Utils.Timing
             }
         }
 
-        public DateTime Start { get;}
-        public DateTime End { get;}
+        public DateTime Start { get; }
+        public DateTime End { get; }
         public TimeSpan Duration => End - Start;
 
         public bool Equals(DateTimeRange other)
         {
             throw new NotImplementedException();
         }
-
     }
 }

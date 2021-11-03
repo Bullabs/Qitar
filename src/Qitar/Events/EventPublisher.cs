@@ -47,4 +47,3 @@ namespace Qitar.Events
         }
     }
 }
-

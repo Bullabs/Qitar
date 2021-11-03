@@ -6,6 +6,6 @@ namespace Qitar.Utils.Timing
     {
         DateTime Now { get; }
         bool SupportsMultipleTimezone { get; }
-        DateTimeKind DateTimeKind {get;}
+        DateTimeKind DateTimeKind {get; }
     }
 }

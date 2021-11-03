@@ -116,7 +116,6 @@ namespace Qitar.Utils.Timing
             }
         }
 
-
         public DateTimeRange Last7Days
         {
             get

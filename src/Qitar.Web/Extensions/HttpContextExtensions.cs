@@ -11,7 +11,6 @@ namespace Qitar.Web.Extensions
 
         public static void SetTenantInfo<T>(this HttpContext httpContext, T tenantInfo)
         {
-
         }
     }
 }

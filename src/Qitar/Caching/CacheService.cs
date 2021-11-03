@@ -41,7 +41,6 @@ namespace Qitar.Caching
             await _cacheProvider.Add(normalizedKey, result, cacheTime, cancellationToken).ConfigureAwait(false);
 
             return result;
-
         }
 
         public async ValueTask RemoveAsync(string key, CancellationToken cancellationToken = default)

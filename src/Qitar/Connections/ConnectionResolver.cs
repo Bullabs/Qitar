@@ -11,7 +11,6 @@ namespace Qitar.Connections
         private readonly ICurrentTenant _tenant;
         private readonly IConnectionFactory _connectionFactory;
 
-
         public ConnectionResolver(ICurrentTenant tenant, IConnectionFactory connectionFactory)
         {
             _tenant = tenant.NotNull();
@@ -30,7 +29,6 @@ namespace Qitar.Connections
             }
 
             return await _connectionFactory.Create(type, conString, cancellationToken).ConfigureAwait(false);
-
         }
     }
 }

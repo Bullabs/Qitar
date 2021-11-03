@@ -39,13 +39,11 @@ namespace Qitar.Utils.System
         public int ProcessorCount
         {
             get { return Environment.ProcessorCount; }
-
         }
 
         public string Architecture
         {
             get { return RuntimeInformation.OSArchitecture.ToString(); }
-
         }
 
         public string ApplicationName

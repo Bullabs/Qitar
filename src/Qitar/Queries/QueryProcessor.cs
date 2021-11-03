@@ -31,7 +31,6 @@ namespace Qitar.Queries
                ?? throw new InvalidOperationException($"Could not create wrapper type for {t}")));
 
             return handler.Handle(query, _resolveHandler,cancellationToken);
-
         }
     }
 }

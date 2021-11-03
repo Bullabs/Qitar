@@ -19,7 +19,6 @@ namespace Qitar.Web.Tenancy.Strategies
             var host = httpContext.Request.Host;
 
             return new ValueTask<string>(host.Value);
-
         }
     }
 }

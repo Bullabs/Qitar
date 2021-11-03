@@ -13,7 +13,6 @@ namespace Qitar.Serialization
 
         public TextJsonProvider(IOptions<SerializerOptions> options )
         {
-
             var serializerOptions = options.Value;
 
             _jsonOptions = new JsonSerializerOptions()

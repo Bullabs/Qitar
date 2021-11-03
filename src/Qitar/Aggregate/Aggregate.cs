@@ -31,6 +31,5 @@ namespace Qitar.Aggregate
     }
     public abstract class Aggregate : Aggregate<Guid>, IAggregate
     {
-
     }
 }

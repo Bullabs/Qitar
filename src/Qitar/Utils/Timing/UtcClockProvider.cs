@@ -11,4 +11,3 @@ namespace Qitar.Utils.Timing
         public DateTimeKind DateTimeKind => DateTimeKind.Utc;
     }
 }
-

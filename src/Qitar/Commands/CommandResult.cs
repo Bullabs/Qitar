@@ -17,7 +17,6 @@ namespace Qitar.Commands
 
         public CommandResult()
         {
-
         }
 
         public CommandResult(object result)

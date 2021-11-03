@@ -32,6 +32,5 @@ namespace Qitar.Store.Transactions
             _transaction?.Dispose();
             _transaction = null;
         }
-
     }
 }

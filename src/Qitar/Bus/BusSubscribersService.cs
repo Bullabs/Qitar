@@ -4,7 +4,6 @@ using Qitar.Messages;
 using Qitar.Utils;
 using Qitar.Utils.System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,7 +11,6 @@ namespace Qitar.Bus
 {
     public class BusSubscribersService : IHostedService
     {
-
         private readonly IEnumerable<IMessageSubscriber> _subscribers;
         private readonly ILogger _logger;
         private readonly ISystemInfo _systemInfo;

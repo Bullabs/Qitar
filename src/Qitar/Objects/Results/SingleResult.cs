@@ -1,4 +1,4 @@
-﻿namespace Qitar.Objects.Responses
+namespace Qitar.Objects.Responses
 {
     public class SingleResult<T> : ISingleResult<T>
     {

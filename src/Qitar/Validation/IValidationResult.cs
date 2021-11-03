@@ -1,5 +1,4 @@
-﻿using Qitar.Objects.Responses;
-
+using Qitar.Objects.Responses;
 namespace Qitar.Validation
 {
     public interface IValidationResult: IResult

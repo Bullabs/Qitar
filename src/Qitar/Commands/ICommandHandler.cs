@@ -1,4 +1,4 @@
-﻿using Qitar.Messages;
+using Qitar.Messages;
 
 namespace Qitar.Commands
 {

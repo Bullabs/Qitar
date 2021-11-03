@@ -6,9 +6,9 @@ namespace Qitar.Bus
 {
     internal class BusTopicNormalizer : IBusTopicNormalizer
     {
-
         private readonly ICurrentTenant _tenant;
         private readonly IBusOptions _options;
+
         public BusTopicNormalizer(ICurrentTenant tenant)
         {
             _tenant = tenant.NotNull();

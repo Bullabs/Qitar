@@ -7,7 +7,7 @@ namespace Qitar.Commands
 {
     public interface ICommandResult: IResult
     {
-        public bool IsSuccessful { get;}
+        public bool IsSuccessful { get; }
         public object Result { get; set; }
         public string Message { get; set; }
         public IEnumerable<IEvent> Events { get; set; }

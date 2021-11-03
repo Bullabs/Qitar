@@ -40,7 +40,6 @@ namespace Qitar.Commands
             _logger.Information("Handle command");
 
             return await Process(command, cancellationToken).ConfigureAwait(false);
-
         }
 
         private async ValueTask<ICommandResult> Process<TCommand>(TCommand command, CancellationToken cancellationToken = default) where TCommand : ICommand
@@ -78,5 +77,3 @@ namespace Qitar.Commands
         }
     }
 }
-
-

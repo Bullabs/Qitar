@@ -37,7 +37,6 @@ namespace Qitar.Logging
                 case LogLevel.Warning: logger.LogWarning(message); break;
                 case LogLevel.Critical: logger.LogCritical(0, exception, message); break;
                 case LogLevel.Error: logger.LogError(0, exception, message); break;
-
             }
         }
     }

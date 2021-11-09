@@ -1,4 +1,4 @@
-﻿using Qitar.Events;
+using Qitar.Events;
 using System;
 using System.Collections.Generic;
 

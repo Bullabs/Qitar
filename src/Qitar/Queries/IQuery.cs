@@ -1,8 +1,8 @@
-﻿using Qitar.Objects;
+﻿using Qitar.Objects.Results;
 
 namespace Qitar.Queries
 {
-    public interface IQuery<out TResult>
+    public interface IQuery<out TResult> where TResult : IResult
     {
     }
 }

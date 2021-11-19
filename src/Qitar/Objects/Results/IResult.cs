@@ -1,4 +1,4 @@
-﻿namespace Qitar.Objects.Responses
+﻿namespace Qitar.Objects.Results
 {
     public interface IResult
     {

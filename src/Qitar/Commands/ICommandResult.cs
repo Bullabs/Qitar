@@ -1,5 +1,5 @@
 using Qitar.Events;
-using Qitar.Objects.Responses;
+using Qitar.Objects.Results;
 using System;
 using System.Collections.Generic;
 

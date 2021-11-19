@@ -1,4 +1,4 @@
-using Qitar.Objects.Responses;
+using Qitar.Objects.Results;
 using System.Threading;
 using System.Threading.Tasks;
 

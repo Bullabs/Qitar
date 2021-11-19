@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Qitar.Objects.Results;
 
 namespace Qitar.Queries
 {
-    public interface IListQuery<TResult> : IQuery<IReadOnlyList<TResult>>
+    public interface IListQuery<TResult> : IQuery<IListResult<TResult>>
     {
     }
 }

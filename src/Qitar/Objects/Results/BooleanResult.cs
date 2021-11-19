@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Qitar.Objects.Responses
+﻿namespace Qitar.Objects.Results
 {
-    public class BooleanResult : IResult
+    public class BooleanResult : IBooleanResult
     {
-        public bool IsSuccess { get; set; }
+        public bool Value { get; }
+
+        private BooleanResult(bool value)
+        {
+            Value = value;
+        }
+
+        public static BooleanResult Create(bool value)
+        {
+            return new BooleanResult(value);
+        }
     }
 }

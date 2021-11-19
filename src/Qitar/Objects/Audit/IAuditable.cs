@@ -1,12 +1,9 @@
-﻿using System;
-
-namespace Qitar.Objects.Audit
+﻿namespace Qitar.Objects.Audit
 {
-    public interface IAuditable
+    public interface IAuditable<TUser> : ICreationAudit<TUser>, IModificationAudit<TUser>, IDeletionAudit<TUser>
     {
-        DateTime CreatedOn { get; set; }
-        int? CreatedBy { get; set; }
-        DateTime? ModifiedOn { get; set; }
-        int? ModifiedBy { get; set; }
+    }
+    public interface IAuditable : ICreationAudit, IModificationAudit, IDeletionAudit
+    {
     }
 }

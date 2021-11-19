@@ -3,9 +3,8 @@
   <PropertyGroup>
 
     <LangVersion>10.0</LangVersion>
-
-    <Version>0.1.13</Version>
-    <PackageVersion>0.1.13</PackageVersion>
+    <Version>0.1.14</Version>
+    <PackageVersion>0.1.14</PackageVersion>
     <Product>Qitar</Product>
     <Description>Qitar is a framework for building high-performance applications</Description>
     <Authors>Bullabs</Authors>
@@ -17,8 +16,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-     
+    <PackageReadmeFile>README.md</PackageReadmeFile>  
     <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>

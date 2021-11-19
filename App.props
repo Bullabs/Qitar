@@ -16,7 +16,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageReadmeFile>README.md</PackageReadmeFile>  
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>

@@ -1,4 +1,5 @@
 ﻿using Qitar.Dependencies;
+using Qitar.Objects.Results;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace Qitar.Queries
             _resolveHandler = resolveHandler ?? throw new ArgumentNullException(nameof(resolveHandler));
         }
 
-        public ValueTask<TResult> Process<TQuery, TResult>(TQuery query, CancellationToken cancellationToken = default) where TQuery : IQuery<TResult>
+        public ValueTask<TResult> Process<TQuery, TResult>(TQuery query, CancellationToken cancellationToken = default) where TQuery : IQuery<TResult> where TResult : IResult
         {
             if (query == null)
             {

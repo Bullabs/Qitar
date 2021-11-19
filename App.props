@@ -3,8 +3,9 @@
   <PropertyGroup>
 
     <LangVersion>10.0</LangVersion>
-    <Version>0.1.12</Version>
-    <PackageVersion>0.1.12</PackageVersion>
+
+    <Version>0.1.13</Version>
+    <PackageVersion>0.1.13</PackageVersion>
     <Product>Qitar</Product>
     <Description>Qitar is a framework for building high-performance applications</Description>
     <Authors>Bullabs</Authors>

@@ -1,15 +1,21 @@
 ﻿using Qitar.Entities;
-using Qitar.Objects;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Qitar.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : IEntity, IIdentity
+    public interface IRepository
     {
-        ValueTask<TEntity> Insert(TEntity entity, CancellationToken cancellationToken = default);
-        ValueTask<bool> Update(TEntity entity, CancellationToken cancellationToken = default);
-        ValueTask<bool> Delete(TEntity entity, CancellationToken cancellationToken = default);
-        ValueTask<TEntity> GetById(object id, CancellationToken cancellationToken = default);
+    }
+
+    public interface IRepository<TEntity> : IReadonlyRepository<TEntity>, IQueryRepository<TEntity> where TEntity : class, IEntity
+    {
+        ValueTask Insert(TEntity entity, CancellationToken cancellationToken = default);
+        ValueTask InsertMany(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
+        ValueTask Update(TEntity entity, CancellationToken cancellationToken = default);
+        ValueTask UpdateMany(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
+        ValueTask Delete(TEntity entity, CancellationToken cancellationToken = default);
+        ValueTask DeleteMany(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
     }
 }

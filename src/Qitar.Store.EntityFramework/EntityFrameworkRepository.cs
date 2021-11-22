@@ -1,13 +1,14 @@
 ﻿using Qitar.Entities;
-using Qitar.Objects;
 using Qitar.Repositories;
 using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Qitar.Store.EntityFramework
 {
-    public class EntityFrameworkRepository<TEntity> : IRepository<TEntity>, IReadonlyRepository<TEntity> where TEntity : class, IEntity ,IIdentity
+    public class EntityFrameworkRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
         private readonly IDbContextFactory _dbContextFactory;
 
@@ -16,7 +17,22 @@ namespace Qitar.Store.EntityFramework
             _dbContextFactory = dbContextFactory;
         }
 
-        public ValueTask<bool> Delete(TEntity entity, CancellationToken cancellationToken = default)
+        public ValueTask Delete(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask Delete(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask DeleteMany(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<TEntity> Find(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -26,12 +42,22 @@ namespace Qitar.Store.EntityFramework
             throw new NotImplementedException();
         }
 
-        public ValueTask<TEntity> Insert(TEntity entity, CancellationToken cancellationToken = default)
+        public ValueTask Insert(TEntity entity, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<bool> Update(TEntity entity, CancellationToken cancellationToken = default)
+        public ValueTask InsertMany(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask Update(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask UpdateMany(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }

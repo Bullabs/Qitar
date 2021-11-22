@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Qitar.Aggregate
 {
-    public interface IAggregate<out TKey> : IEntity<TKey>, IVersionable
+    public interface IAggregate<TKey> : IEntity<TKey>, IVersionable
     {
         IEnumerable<IEvent> DequeueUncommittedEvents();
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Qitar.Utils;
+using Qitar.Utils.System;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,17 +10,19 @@ namespace Qitar.Logging
     public class LogProvider : ILogProvider
     {
         private readonly ILoggerFactory _loggerFactory;
+        private readonly ISystemInfo _systemInfo;
         private Dictionary<string, Microsoft.Extensions.Logging.ILogger> _loggers = new Dictionary<string, Microsoft.Extensions.Logging.ILogger>();
 
-        public LogProvider(ILoggerFactory loggerFactory)
+        public LogProvider(ILoggerFactory loggerFactory, ISystemInfo systemInfo)
         {
             _loggerFactory = loggerFactory.NotNull();
+            _systemInfo = systemInfo.NotNull();
         }
 
         public void Log(string filePath, int lineNumber, string member, LogLevel level, string message, Exception exception = null)
         {
             var loggerKey = Path.GetFileNameWithoutExtension(filePath);
-            var logger  =_loggers.GetValueOrDefault(loggerKey);
+            var logger = _loggers.GetValueOrDefault(loggerKey);
 
             if (!_loggers.ContainsKey(loggerKey))
             {
@@ -27,7 +30,7 @@ namespace Qitar.Logging
                 _loggers[loggerKey] = logger;
             }
 
-            message = $"[{member}({lineNumber})]-{message}";
+            message = $"[{_systemInfo.MachineName}][{member}({lineNumber})]-{message}";
 
             switch (level)
             {

@@ -12,7 +12,7 @@ updates:
     labels:
       - maintenance
       - dependencies  
-    target-branch: "development"  
+    target-branch: "main"  
   - package-ecosystem: "github-actions"
     directory: "/" # This should be / rather than .github/workflows
     schedule:

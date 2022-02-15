@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Qitar.Web.Exceptions;
+using Qitar.Web.Metrics;
 using Qitar.Web.Security;
 using Qitar.Web.Tenancy;
 using Qitar.Web.Tracing;
@@ -8,11 +9,11 @@ namespace Qitar.Web.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseQitarWeb(this IApplicationBuilder app, bool correlationIdSupport = true, bool securityHeadersSupport = true, bool exceptionHandlingSupport = true, bool tenancySupport = false)
+        public static IApplicationBuilder UseQitarWeb(this IApplicationBuilder app, bool tracingSupport = true, bool securityHeadersSupport = true, bool exceptionHandlingSupport = true, bool metricsSupport = false, bool tenancySupport = false)
         {
-            if(correlationIdSupport)
+            if(tracingSupport)
             {
-                app.UseCorrelationId();
+                app.UseTracing();
             }
             if (securityHeadersSupport)
             {
@@ -22,6 +23,10 @@ namespace Qitar.Web.Extensions
             {
                 app.UseExceptionHandling();
             }
+            if (metricsSupport)
+            {
+                app.UseTenancy();
+            }
             if (tenancySupport)
             {
                 app.UseTenancy();
@@ -30,7 +35,7 @@ namespace Qitar.Web.Extensions
             return app;
         }
 
-        internal static IApplicationBuilder UseCorrelationId(this IApplicationBuilder app)
+        internal static IApplicationBuilder UseTracing(this IApplicationBuilder app)
         {
             return app.UseMiddleware<CorrelationIdMiddleware>();
         }
@@ -43,6 +48,12 @@ namespace Qitar.Web.Extensions
         internal static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder app)
         {
             return app.UseMiddleware<ExceptionHandlingMiddleware>();
+        }
+
+        internal static IApplicationBuilder UseMetrics(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<RequestTimerMiddleware>();
+            return app.UseMiddleware<RequestErrorMiddleware>();
         }
 
         internal static IApplicationBuilder UseTenancy(this IApplicationBuilder app)

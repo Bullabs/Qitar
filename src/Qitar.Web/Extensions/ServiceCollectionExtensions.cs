@@ -19,7 +19,7 @@ namespace Qitar.Web.Extensions
 
         internal static IServiceCollection AddVersioning(this IServiceCollection services)
         {
-            return services;
+            return services.AddApiVersioning();
         }
     }
 }

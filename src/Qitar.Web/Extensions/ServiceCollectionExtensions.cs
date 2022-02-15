@@ -5,7 +5,7 @@ namespace Qitar.Web.Extensions
 {
     public static  class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddWeb(this IServiceCollection services)
+        public static IServiceCollection AddQitarWeb(this IServiceCollection services)
         {
             if (services == null)
             {

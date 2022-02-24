@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Qitar.Web.Exceptions;
 using Qitar.Web.Metrics;
 using Qitar.Web.Security;
+using Qitar.Web.Swagger;
 using Qitar.Web.Tenancy;
 using Qitar.Web.Tracing;
 
@@ -59,6 +61,18 @@ namespace Qitar.Web.Extensions
         internal static IApplicationBuilder UseTenancy(this IApplicationBuilder app)
         {
             return app.UseMiddleware<TenancyMiddleware>();
+        }
+
+        internal static IApplicationBuilder UseSwagger(this IApplicationBuilder app)
+        {
+            var resolver = app.ApplicationServices.GetService<ISwaggerHtmlResolver>();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options => 
+            {
+                options.IndexStream = () => resolver.Resolver();
+            });
+            return app;
         }
     }
 }

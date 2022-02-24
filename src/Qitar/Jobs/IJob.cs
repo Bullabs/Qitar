@@ -1,10 +1,11 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Qitar.Jobs
 {
     public interface IJob
     {
-        ValueTask Execute(CancellationToken cancellationToken = default);
+        ValueTask Execute(IServiceProvider serviceProvider, CancellationToken cancellationToken = default);
     }
 }

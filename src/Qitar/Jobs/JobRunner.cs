@@ -1,4 +1,5 @@
 ﻿using Qitar.Metrics;
+using Qitar.Utils;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -9,14 +10,17 @@ namespace Qitar.Jobs
     public class JobRunner : IJobRunner
     {
         private readonly IMetrics _metrics;
-        public JobRunner(IMetrics metrics)
+        private readonly IServiceProvider _serviceProvider;
+
+        public JobRunner(IServiceProvider serviceProvider, IMetrics metrics)
         {
-            _metrics = metrics ?? throw new ArgumentNullException(nameof(metrics));
+            _serviceProvider = serviceProvider.NotNull();
+            _metrics = metrics.NotNull();
         }
 
         public async ValueTask Run(IJob job, CancellationToken cancellationToken = default)
         {
-            var jobDuration =  await PreformanceCounter(()=>job.Execute(cancellationToken)).ConfigureAwait(false);
+            var jobDuration =  await PreformanceCounter(()=>job.Execute(_serviceProvider,cancellationToken)).ConfigureAwait(false);
 
             await _metrics.Timer(nameof(job), jobDuration, cancellationToken).ConfigureAwait(true);
         }

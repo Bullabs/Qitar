@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Qitar.Web.Swagger;
 using System;
 
 namespace Qitar.Web.Extensions
@@ -13,6 +14,7 @@ namespace Qitar.Web.Extensions
             }
 
             services.AddVersioning();
+            services.AddSwagger();
 
             return services;
         }
@@ -20,6 +22,18 @@ namespace Qitar.Web.Extensions
         internal static IServiceCollection AddVersioning(this IServiceCollection services)
         {
             return services.AddApiVersioning();
+        }
+
+        internal static IServiceCollection AddSwagger(this IServiceCollection services)
+        {
+            services.AddSwagger();
+            services.AddSwaggerGen(options =>
+            {
+                options.DocumentFilter<ConcealedApiFilter>();
+            });
+
+            return services;
+
         }
     }
 }

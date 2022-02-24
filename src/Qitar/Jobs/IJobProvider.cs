@@ -6,10 +6,12 @@ namespace Qitar.Jobs
 {
     public interface IJobProvider
     {
-        ValueTask<IJobId> ScheduleJob(IJob job, TimeSpan delay,CancellationToken cancellationToken = default);
-        ValueTask DeleteJob(IJobId jobId , CancellationToken cancellationToken = default);
-        ValueTask AddRecurringJob(IJob job, string cronExpression, CancellationToken cancellationToken = default);
-        ValueTask UpdateRecurringJob(IJob job, string cronExpression, CancellationToken cancellationToken = default);
-        ValueTask DeleteRecurringJob(IJob job, CancellationToken cancellationToken = default);
+        ValueTask<IJobId> Schedule(IJob job, TimeSpan delay,CancellationToken cancellationToken = default);
+        ValueTask<IJobId> Schedule(IJob job, DateTimeOffset runAt, CancellationToken cancellationToken = default);
+        ValueTask<IJobId> Schedule(IJob job, CancellationToken cancellationToken = default);
+        ValueTask Delete(IJobId jobId , CancellationToken cancellationToken = default);
+        ValueTask AddRecurring(IJob job, string cronExpression, CancellationToken cancellationToken = default);
+        ValueTask UpdateRecurring(IJob job, string cronExpression, CancellationToken cancellationToken = default);
+        ValueTask DeleteRecurring(IJob job, CancellationToken cancellationToken = default);
     }
 }

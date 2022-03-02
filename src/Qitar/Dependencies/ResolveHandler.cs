@@ -1,5 +1,4 @@
 ﻿using Qitar.Utils;
-using System;
 
 namespace Qitar.Dependencies
 {
@@ -9,7 +8,7 @@ namespace Qitar.Dependencies
 
         public ResolveHandler(IResolver resolver)
         {
-            _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
+            _resolver = resolver.NotNull();
         }
 
         THandler IResolveHandler.ResolveHandler<THandler>()

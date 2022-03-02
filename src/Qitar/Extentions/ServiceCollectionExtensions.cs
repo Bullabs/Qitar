@@ -6,13 +6,16 @@ using Qitar.Commands;
 using Qitar.Cryptography;
 using Qitar.Events;
 using Qitar.Jobs;
+using Qitar.Logging;
 using Qitar.Mapping;
 using Qitar.Messages;
+using Qitar.Metrics;
 using Qitar.Queries;
 using Qitar.Serialization;
 using Qitar.Tenancy;
 using Qitar.Tenancy.Store;
 using Qitar.Utils.System;
+using Qitar.Utils.Timing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +40,11 @@ namespace Qitar
                 .AddMapping(typeList)
                 .AddSerializer()
                 .AddCaching()
+                .AddLogging()
                 .AddJobs()
+                .AddTiming()
+                .AddMetrics()
+                .AddTenancy()
                 .AddCryptography()
                 .AddSystemInfo();
             
@@ -98,6 +105,30 @@ namespace Qitar
 
             return services;
         }
+
+        private static IServiceCollection AddLogging(this IServiceCollection services)
+        {
+            services.AddTransient<ILogger, Logger>();
+            services.AddSingleton<ILogProvider, LogProvider>();
+
+            return services;
+        }
+        private static IServiceCollection AddTiming(this IServiceCollection services)
+        {
+            services.AddSingleton<IClock, Clock>();
+            services.AddSingleton<IClockProvider, UtcClockProvider>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddMetrics(this IServiceCollection services)
+        {
+            services.AddSingleton<IMetrics, Metrics.Metrics>();
+            services.AddSingleton<ITimer, MetricsTimer>();
+
+            return services;
+        }
+
 
         private static IServiceCollection AddMapping(this IServiceCollection services, IEnumerable<Type> types)
         {

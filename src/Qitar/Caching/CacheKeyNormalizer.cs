@@ -19,7 +19,7 @@ namespace Qitar.Caching
         {
             var normalizedKey = $"K:{_options.KeyPrefix}{key}";
 
-            if(_tenant.Id.HasValue)
+            if(!_tenant.Id.HasValue() && _tenant.Id.HasValue)
             {
                 normalizedKey = $"T:{_tenant.Id.Value},{normalizedKey}";
             }

@@ -13,5 +13,22 @@ namespace Qitar.Utils.Reflection
         {
             return memberInfo.IsDefined(typeof(T), inherit);
         }
+
+        public static Type[] GetAllInheritedTypes(this Type type)
+        {
+            if (type.IsInterface)
+            {
+                return Assembly.GetAssembly(type).GetTypes()
+                    .Where(_ => _.IsClass && !_.IsAbstract && type.IsAssignableFrom(_)).ToArray();
+            }
+
+            if (type.IsAbstract)
+            {
+                return Assembly.GetAssembly(type).GetTypes()
+                    .Where(_ => _.IsClass && !_.IsAbstract && _.IsSubclassOf(type)).ToArray();
+            }
+
+            return new Type[] { };
+        }
     }
 }

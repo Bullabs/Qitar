@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using Qitar.Serialization;
+using Qitar.Utils;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,8 +14,8 @@ namespace Qitar.Caching.DistributedCache
 
         public DistributedCacheProvider(IDistributedCache distributedCache, ISerializer serializer)
         {
-            _distributedCache = distributedCache ?? throw new ArgumentNullException(nameof(distributedCache));
-            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+            _distributedCache = distributedCache.NotNull();
+            _serializer = serializer.NotNull();
         }
 
         public async ValueTask Add<T>(string key, T obj, int cacheTime, CancellationToken cancellationToken = default)
@@ -40,7 +41,7 @@ namespace Qitar.Caching.DistributedCache
         {
             var value = await _distributedCache.GetAsync(key, cancellationToken).ConfigureAwait(false);
 
-            return value == null || value.Length == 0;
+            return value != null || value?.Length > 0;
         }
 
         public async ValueTask Remove(string key, CancellationToken cancellationToken = default)

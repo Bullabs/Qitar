@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Json.Abstraction;
+using Microsoft.Extensions.Options;
 using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Qitar.Serialization
+namespace Qitar.Serialization.Provider
 {
     public class TextJsonProvider : ISerializerProvider
     {
@@ -17,7 +18,8 @@ namespace Qitar.Serialization
 
             _jsonOptions = new JsonSerializerOptions()
             {
-                WriteIndented = serializerOptions.IsIndented
+                WriteIndented = serializerOptions.IsIndented,
+                Converters = { new JsonAbstractionConverter() }
             };
         }
 

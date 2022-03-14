@@ -26,7 +26,7 @@ namespace Qitar.Validation.FluentValidation
                 throw new ValidationException($"{nameof(command)} Validator is not found");
             }
 
-            var validationResult = await validator.ValidateAsync(command).ConfigureAwait(false);
+            var validationResult = await validator.ValidateAsync(command, canclationToken).ConfigureAwait(false);
 
             var errors = string.Concat(validationResult.Errors.Select(s => $"{s.ErrorCode}-{s.ErrorMessage};"));
             return new ValidationResult(errors);

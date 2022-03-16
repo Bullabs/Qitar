@@ -1,6 +1,6 @@
 ﻿namespace Qitar.Tenancy
 {
-    public interface ICurrentTenant:ITenant
+    public interface ICurrentTenant : ITenant
     {
     }
 }

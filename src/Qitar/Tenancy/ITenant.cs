@@ -8,7 +8,7 @@ namespace Qitar.Tenancy
         public string Identifier { get; }
         public string Name { get; }
         public string ConnectionString { get; }
-        public int ConnectionType { get; }
+        public string ConnectionType { get; }
         public string Culture { get; }
         public string TimeZone { get; }
     }

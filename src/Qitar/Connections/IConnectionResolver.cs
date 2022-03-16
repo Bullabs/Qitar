@@ -6,6 +6,6 @@ namespace Qitar.Connections
 {
     public interface IConnectionResolver
     {
-        ValueTask<IDbConnection> Resolve(string defaultConnectionString, CancellationToken cancellationToken = default);
+        ValueTask<IDbConnection> Resolve(CancellationToken cancellationToken = default);
     }
 }

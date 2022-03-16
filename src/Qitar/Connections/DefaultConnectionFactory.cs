@@ -6,7 +6,7 @@ namespace Qitar.Connections
 {
     public class DefaultConnectionFactory : IConnectionFactory
     {
-        public ValueTask<IDbConnection> Create(int connectionType, string connectionString, CancellationToken cancellationToken)
+        public ValueTask<IDbConnection> Create(string connectionType, string connectionString, CancellationToken cancellationToken)
         {
             return default;
         }

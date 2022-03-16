@@ -6,6 +6,6 @@ namespace Qitar.Connections
 {
     public interface IConnectionFactory
     {
-        ValueTask<IDbConnection> Create(int connectionType, string connectionString, CancellationToken cancellationToken);
+        ValueTask<IDbConnection> Create(string connectionType, string connectionString, CancellationToken cancellationToken);
     }
 }

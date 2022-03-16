@@ -16,7 +16,7 @@ namespace Qitar.Tenancy
         public string Identifier => _accessor.CurrentTenant?.Identifier;
         public string Name => _accessor.CurrentTenant?.Name;
         public string ConnectionString => _accessor.CurrentTenant?.ConnectionString;
-        public int ConnectionType => _accessor.CurrentTenant.ConnectionType;
+        public string ConnectionType => _accessor.CurrentTenant?.ConnectionType;
         public string Culture=> _accessor.CurrentTenant?.Culture;
         public string TimeZone=> _accessor.CurrentTenant?.TimeZone;
     }

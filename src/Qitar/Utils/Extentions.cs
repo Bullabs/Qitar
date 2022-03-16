@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Qitar.Utils
 {
@@ -31,6 +32,11 @@ namespace Qitar.Utils
 
             source.Add(item);
             return true;
+        }
+
+        public static ValueTask<T> ValueTask<T>(this T value)
+        {
+            return new ValueTask<T>(value);
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using Qitar.Tenancy;
+﻿using Microsoft.Extensions.Options;
+using Qitar.Tenancy;
 using Qitar.Utils;
 using System.Data;
 using System.Threading;
@@ -10,25 +11,23 @@ namespace Qitar.Connections
     {
         private readonly ICurrentTenant _tenant;
         private readonly IConnectionFactory _connectionFactory;
+        private readonly ConnectionOptions _options;
 
-        public ConnectionResolver(ICurrentTenant tenant, IConnectionFactory connectionFactory)
+        public ConnectionResolver(ICurrentTenant tenant, IConnectionFactory connectionFactory, IOptions<ConnectionOptions> options)
         {
             _tenant = tenant.NotNull();
             _connectionFactory = connectionFactory.NotNull();
+            _options = options.Value;
         }
 
-        public async ValueTask<IDbConnection> Resolve(string defaultConnectionString, CancellationToken cancellationToken = default)
+        public async ValueTask<IDbConnection> Resolve(CancellationToken cancellationToken = default)
         {
-            var type = 0;
-            var conString = defaultConnectionString.NotNull();
-
-            if (_tenant.Id.HasValue)
+            if (_tenant == null || string.IsNullOrEmpty(_tenant.ConnectionString))
             {
-                type = _tenant.ConnectionType;
-                conString = _tenant.ConnectionString;
+                return await _connectionFactory.Create(_options.ConnectionType, _options.ConnectionString, cancellationToken).ConfigureAwait(false);
             }
 
-            return await _connectionFactory.Create(type, conString, cancellationToken).ConfigureAwait(false);
+            return await _connectionFactory.Create(_tenant.ConnectionType, _tenant.ConnectionString, cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -29,9 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Validation.FluentVali
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Store", "src\Qitar.Store\Qitar.Store.csproj", "{6598F637-C5BA-4615-A65A-18A9AF9C891A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Store.Postgres", "src\Qitar.Store.Postgres\Qitar.Store.Postgres.csproj", "{11522E5F-60C2-48DE-B881-57BF089693D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Store.Postgres", "src\Qitar.Store.Postgres\Qitar.Store.Postgres.csproj", "{11522E5F-60C2-48DE-B881-57BF089693D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Store.Snowflake", "src\Qitar.Store.Snowflake\Qitar.Store.Snowflake.csproj", "{F1576A62-A035-4B73-B987-1B8465795385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qitar.Store.Snowflake", "src\Qitar.Store.Snowflake\Qitar.Store.Snowflake.csproj", "{F1576A62-A035-4B73-B987-1B8465795385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qitar.Store.Oracle", "src\Qitar.Store.Oracle\Qitar.Store.Oracle.csproj", "{488F5BBF-AB88-42FD-B87A-0797CCFBEB71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{F1576A62-A035-4B73-B987-1B8465795385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1576A62-A035-4B73-B987-1B8465795385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1576A62-A035-4B73-B987-1B8465795385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{488F5BBF-AB88-42FD-B87A-0797CCFBEB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488F5BBF-AB88-42FD-B87A-0797CCFBEB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488F5BBF-AB88-42FD-B87A-0797CCFBEB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488F5BBF-AB88-42FD-B87A-0797CCFBEB71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

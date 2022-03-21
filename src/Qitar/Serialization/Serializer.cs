@@ -1,4 +1,5 @@
-﻿using Qitar.Utils;
+﻿using Qitar.Logging;
+using Qitar.Utils;
 using System;
 using System.IO;
 using System.Text;
@@ -10,16 +11,20 @@ namespace Qitar.Serialization
     public class Serializer : ISerializer
     {
         private readonly ISerializerProvider _provider;
+        private readonly ILogger _logger;
 
-        public Serializer(ISerializerProvider provider)
+        public Serializer(ISerializerProvider provider, ILogger logger)
         {
-            _provider = provider ?? throw new ArgumentNullException(nameof(provider));
+            _provider = provider.NotNull();
+            _logger = logger.NotNull();
         }
 
         public async ValueTask<object> Deserialize(string value, Type type, CancellationToken cancellationToken)
         {
             value.NotNull();
             type.NotNull();
+
+            _logger.Trace($"Deserializing ${type.Name}");
 
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(value));
 
@@ -38,6 +43,8 @@ namespace Qitar.Serialization
         {
             value.NotNull();
 
+            _logger.Trace($"Deserializing ${nameof(TObject)}");
+
             using var stream = new MemoryStream(Encoding.UTF8.GetBytes(value));
 
             return await _provider.DeserializeAsync<TObject>(stream, cancellationToken).ConfigureAwait(false);
@@ -47,6 +54,8 @@ namespace Qitar.Serialization
         {
             stream.NotNull();
 
+            _logger.Trace($"Deserializing ${nameof(TObject)}");
+
             return await _provider.DeserializeAsync<TObject>(stream, cancellationToken).ConfigureAwait(false);
         }
 
@@ -54,12 +63,16 @@ namespace Qitar.Serialization
         {
             stream.NotNull();
 
+            _logger.Trace($"Deserializing ${type.Name}");
+
             return await _provider.DeserializeAsync(stream, type, cancellationToken).ConfigureAwait(false);
         }
 
         public async ValueTask<TObject> Deserialize<TObject>(byte[] valueArray, CancellationToken cancellationToken)
         {
             valueArray.NotNull();
+
+            _logger.Trace($"Deserializing ${nameof(TObject)}");
 
             var stream = new MemoryStream(valueArray);
 
@@ -84,6 +97,8 @@ namespace Qitar.Serialization
         public async ValueTask<Stream> SerializeStream<TObject>(TObject obj, CancellationToken cancellationToken)
         {
             obj.NotNull();
+
+            _logger.Trace($"Serializing ${nameof(obj)}");
 
             var stream = new MemoryStream();
 

@@ -1,4 +1,5 @@
 ﻿using Qitar.Caching;
+using Qitar.Logging;
 using Qitar.Tenancy.Store;
 using Qitar.Utils;
 using System;
@@ -14,12 +15,14 @@ namespace Qitar.Tenancy
         private readonly ITenantStore _store;
         private readonly IEnumerable<ITenantStrategy> _strategies;
         private readonly ICacheService _cache;
+        private readonly ILogger _logger;
 
-        public TenantResolver(IEnumerable<ITenantStrategy> strategies, ITenantStore store, ICacheService cache)
+        public TenantResolver(IEnumerable<ITenantStrategy> strategies, ITenantStore store, ICacheService cache, ILogger logger)
         {
             _store = store.NotNull();
             _strategies = strategies.NotNull().OrderByDescending(s => s.Priority);
             _cache = cache.NotNull();
+            _logger = logger.NotNull();
         }
 
         public async ValueTask<ITenant> Resolve(object context, CancellationToken cancellationToken = default)
@@ -27,6 +30,8 @@ namespace Qitar.Tenancy
             context.NotNull();
 
             ITenant tenantInfo = null;
+
+            _logger.Information("Resolving tenant");
 
             foreach (var strategy in _strategies)
             {

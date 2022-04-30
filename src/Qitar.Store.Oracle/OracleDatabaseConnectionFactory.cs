@@ -10,7 +10,7 @@ namespace Qitar.Store.Oracle
 {
     public class OracleDatabaseConnectionFactory : ISqlConnectionFactory
     {
-        private readonly ILogger _logger
+        private readonly ILogger _logger;
         public OracleDatabaseConnectionFactory(ILogger logger)
         {
             _logger = logger.NotNull();

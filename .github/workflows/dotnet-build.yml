@@ -19,7 +19,7 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: SonarCloud Scan
-      uses: Hobbs1210/dotnet-sonarscanner
+      uses: Hobbs1210/dotnet-sonarscanner@v5.5.3.2
       with:
         buildCommand: dotnet build .
         projectKey: Bullabs_Qitar

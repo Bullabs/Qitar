@@ -63,7 +63,7 @@ namespace Qitar.Web.Extensions
             return app.UseMiddleware<TenancyMiddleware>();
         }
 
-        internal static IApplicationBuilder UseSwagger(this IApplicationBuilder app)
+        internal static IApplicationBuilder UseSwaggerAPI(this IApplicationBuilder app)
         {
             var resolver = app.ApplicationServices.GetService<ISwaggerHtmlResolver>();
 

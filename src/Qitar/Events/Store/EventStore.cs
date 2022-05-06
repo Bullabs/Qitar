@@ -1,4 +1,5 @@
-﻿using System;
+using Qitar.Utils;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Qitar.Events
 
         public EventStore(IEventStoreProvider eventStoreProvider)
         {
-            _eventStoreProvider = eventStoreProvider ?? throw new ArgumentException(nameof(eventStoreProvider));
+            _eventStoreProvider = eventStoreProvider.NotNull();
         }
 
         public ValueTask<TEntity> Aggregate<TEntity>(Guid streamId, int version, DateTime? timestamp, CancellationToken cancellationToken = default) where TEntity : class, new()

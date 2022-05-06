@@ -1,6 +1,7 @@
-﻿using Qitar.Dependencies;
+using Qitar.Dependencies;
 using Qitar.Messages;
 using Qitar.Serialization;
+using Qitar.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,9 +19,9 @@ namespace Qitar.Bus
 
         public Bus(IResolver resolver, IBusProvider busProvider, ISerializer serializer )
         {
-            _resolver = resolver ?? throw new ArgumentException(nameof(resolver));
-            _busProvider = busProvider?? throw new ArgumentException(nameof(busProvider));
-            _serializer = serializer ?? throw new ArgumentException(nameof(serializer));
+            _resolver = resolver.NotNull();
+            _busProvider = busProvider.NotNull();
+            _serializer = serializer.NotNull();
             _subscribers = new Dictionary<Type, List<object>>();
         }
 

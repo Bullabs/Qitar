@@ -17,7 +17,7 @@ namespace Qitar.Store.Dapper
 
         public DapperRepository(IDbConnection dbConnection)
         {
-            _dbConnection = dbConnection ?? throw new ArgumentException(nameof(dbConnection));
+            _dbConnection = dbConnection.NotNull();
         }
 
         public async ValueTask Delete(TEntity entity, CancellationToken cancellationToken = default)

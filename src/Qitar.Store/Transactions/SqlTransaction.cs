@@ -9,6 +9,7 @@ namespace Qitar.Store.Transactions
     public class SqlTransaction : ITransaction
     {
         private IDbTransaction _transaction;
+        private bool _disposed;
 
         public SqlTransaction(IDbTransaction transaction)
         {
@@ -29,8 +30,21 @@ namespace Qitar.Store.Transactions
 
         public void Dispose()
         {
-            _transaction?.Dispose();
-            _transaction = null;
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+        
+        public void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _transaction?.Dispose();
+                    _transaction = null;
+                }
+                _disposed = true;
+            }            
+        }      
     }
 }

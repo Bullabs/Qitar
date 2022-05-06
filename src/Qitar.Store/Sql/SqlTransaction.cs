@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Qitar.Store.Sql
 {
-    internal sealed class SqlTransaction : ITransaction, IDisposable
+    internal sealed class SqlTransaction : ITransaction
     {
         private IDbContextTransaction _transaction;
+        private bool _disposed;
 
         public SqlTransaction(IDbContextTransaction transaction)
         {
@@ -28,8 +29,21 @@ namespace Qitar.Store.Sql
 
         public void Dispose()
         {
-            _transaction?.Dispose();
-            _transaction = null;
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+        
+        public void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _transaction?.Dispose();
+                    _transaction = null;
+                }
+                _disposed = true;
+            }            
+        }        
     }
 }

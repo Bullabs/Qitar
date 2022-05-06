@@ -41,7 +41,7 @@ namespace Qitar.Caching.DistributedCache
         {
             var value = await _distributedCache.GetAsync(key, cancellationToken).ConfigureAwait(false);
 
-            return value != null || value?.Length > 0;
+            return value?.Length > 0;
         }
 
         public async ValueTask Remove(string key, CancellationToken cancellationToken = default)

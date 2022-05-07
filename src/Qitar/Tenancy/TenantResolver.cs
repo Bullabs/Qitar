@@ -39,7 +39,7 @@ namespace Qitar.Tenancy
 
                 if (!string.IsNullOrWhiteSpace(identfier))
                 {
-                    tenantInfo = await _cache.GetOrSet($"tenant-{identfier}", GetTenante(_store, identfier, cancellationToken)).ConfigureAwait(false);
+                    tenantInfo = await _cache.GetOrSet($"TENANT:{identfier}", GetTenante(_store, identfier, cancellationToken)).ConfigureAwait(false);
                 }
 
                 if(tenantInfo is not null)

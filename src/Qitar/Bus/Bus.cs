@@ -3,6 +3,7 @@ using Qitar.Messages;
 using Qitar.Serialization;
 using Qitar.Utils;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -15,14 +16,14 @@ namespace Qitar.Bus
         private readonly IResolver _resolver;
         private readonly IBusProvider _busProvider;
         private readonly ISerializer _serializer;
-        private readonly Dictionary<Type, List<object>> _subscribers;
+        private readonly ConcurrentDictionary<Type, List<object>> _subscribers;
 
         public Bus(IResolver resolver, IBusProvider busProvider, ISerializer serializer )
         {
             _resolver = resolver.NotNull();
             _busProvider = busProvider.NotNull();
             _serializer = serializer.NotNull();
-            _subscribers = new Dictionary<Type, List<object>>();
+            _subscribers = new();
         }
 
         public async ValueTask Publish<TMessage>(TMessage message, CancellationToken cancellationToken = default) where TMessage : IMessage
@@ -34,12 +35,12 @@ namespace Qitar.Bus
             await _busProvider.Publish("", message.GetType(), data, null, cancellationToken).ConfigureAwait(false);
         }
 
-        public ValueTask Subscribe<TMessage>(TMessage message, CancellationToken cancellationToken = default) where TMessage : IMessage
+        public ValueTask Subscribe<TMessage>(IMessageHandler<TMessage> handler, CancellationToken cancellationToken = default) where TMessage : IMessage
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask Unsubscribe<TMessage>(TMessage message, CancellationToken cancellationToken = default) where TMessage : IMessage
+        public ValueTask Unsubscribe<TMessage>(IMessageHandler<TMessage> handler, CancellationToken cancellationToken = default) where TMessage : IMessage
         {
             throw new NotImplementedException();
         }

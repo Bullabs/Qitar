@@ -32,8 +32,22 @@ namespace Qitar.Bus.Kafka.Extensions
 
             services.AddSingleton(ctx =>
             {
+                var config = ctx.GetRequiredService<IOptions<KafkaOptions>>().Value;
+                return new ConsumerConfig()
+                {
+                };
+            });
+
+            services.AddSingleton(ctx =>
+            {
                 var config = ctx.GetRequiredService<ProducerConfig>();
                 return  new ProducerBuilder<Guid, byte[]>(config);
+            });
+
+            services.AddSingleton(ctx =>
+            {
+                var config = ctx.GetRequiredService<ConsumerConfig>();
+                return new ConsumerBuilder<Guid, byte[]>(config);
             });
 
             services.AddSingleton<IGroupIdFactory, GroupIdFactory>();

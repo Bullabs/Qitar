@@ -50,6 +50,11 @@ namespace Qitar.Bus.RabbitMQ
             return new ValueTask<string>(queueTag);
         }
 
+        public ValueTask<string> Unsubscribe(string queueName, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
         private async Task ConsumerMessage(object sender, BasicDeliverEventArgs message)
         {
             var @event = await _serializer.Deserialize<IEvent>(message.Body.ToArray(), default).ConfigureAwait(false);

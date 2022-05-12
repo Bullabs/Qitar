@@ -1,6 +1,6 @@
 {
   "name": "Qitar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Qitar is a Domain Driven Design oriented application framework.",
   "main": "index.js",
   "authors": {

@@ -1,5 +1,6 @@
 const { name,description,repository } = require('../../package')
 const { gitPlugin } = require('@vuepress/plugin-git')
+const { defaultTheme } = require('@vuepress/theme-default')
 
 module.exports = {
   /**
@@ -10,6 +11,8 @@ module.exports = {
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
   description: description,
+
+  lang: 'en-US',
 
   /**
    * Extra tags to be injected to the page HTML `<head>`
@@ -27,7 +30,7 @@ module.exports = {
    *
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
-  themeConfig: {
+   theme: defaultTheme({
     repo: repository,
     editLinks: false,
     docsDir: '',
@@ -59,7 +62,7 @@ module.exports = {
         }
       ],
     }
-  },
+  }),
 
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/

@@ -1,0 +1,19 @@
+{
+  "name": "Qitar",
+  "version": "0.0.1",
+  "description": "Qitar is a Domain Driven Design oriented application framework.",
+  "main": "index.js",
+  "authors": {
+    "name": "Bullabs",
+    "email": "support@bullabs.com"
+  },
+  "repository": "https://github.com/Bullabs/Qitar",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}

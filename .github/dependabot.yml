@@ -13,6 +13,14 @@ updates:
       - maintenance
       - dependencies  
     target-branch: "main"  
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    labels:
+      - maintenance
+      - dependencies  
+    target-branch: "main"  
   - package-ecosystem: "github-actions"
     directory: "/" # This should be / rather than .github/workflows
     schedule:

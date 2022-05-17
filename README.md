@@ -14,7 +14,7 @@
 
 Qitar is a Domain Driven Design oriented application framework.
 
-**[Learn more about Qitar on our website.](http://bullabs.github.io/)**
+**[Learn more about Qitar on our website.](https://qitar.bullabs.dev/)**
 
 <br>
 

@@ -7,6 +7,7 @@ namespace Qitar.Tenancy.Strategies
     public class StaticStrategy : ITenantStrategy
     {
         private readonly string _identifier;
+
         public StaticStrategy(string identifier)
         {
             _identifier = identifier.NotNull();

@@ -2,7 +2,7 @@
 
 namespace Qitar.Entities
 {
-    public abstract class AuditableEntity<TKey> : Entity<TKey>, IAuditableEntity<TKey>
+    public abstract class AuditableEntity<TKey> : Entity<TKey>, IAuditableEntity<TKey> where TKey : IEquatable<TKey>
     {
         public Guid CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }

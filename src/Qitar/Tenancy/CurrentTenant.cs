@@ -12,7 +12,7 @@ namespace Qitar.Tenancy
             _accessor = accessor.NotNull();
         }
 
-        public Guid? Id => _accessor.CurrentTenant?.Id;
+        public Guid Id => _accessor.CurrentTenant.Id;
         public string Identifier => _accessor.CurrentTenant?.Identifier;
         public string Name => _accessor.CurrentTenant?.Name;
         public string ConnectionString => _accessor.CurrentTenant?.ConnectionString;

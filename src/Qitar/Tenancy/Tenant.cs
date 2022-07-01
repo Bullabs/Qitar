@@ -4,7 +4,7 @@ namespace Qitar.Tenancy
 {
     public record Tenant: ITenant
     {
-        public Guid? Id { get; }
+        public Guid Id { get; }
         public string Identifier { get; }
         public string Name { get; }
         public string ConnectionString { get; }

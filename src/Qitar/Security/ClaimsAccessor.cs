@@ -26,6 +26,6 @@ namespace Qitar.Security
         public IUser CurrentUser
         {
             get => _asyncLocalAccessor.Value;
-        }
+        }          
     }
 }

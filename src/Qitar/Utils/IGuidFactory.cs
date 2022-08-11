@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Qitar.Factories;
+using System;
 
 namespace Qitar.Utils
 {
-    internal interface IGuidFactory
+    public interface IGuidFactory : IFactory<Guid>, IFactory<Guid,Guid>
     {
-        Guid Create();
-        Guid Create(Guid SouriceId);
     }
 }

@@ -1,7 +1,10 @@
 ﻿using Qitar.Utils;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Qitar.Cryptography
 {
@@ -20,6 +23,14 @@ namespace Qitar.Cryptography
             using (var sha256Hash = SHA256.Create())
             {
                 return sha256Hash.ComputeHash(data);
+            }
+        }
+
+        public async ValueTask<byte[]> Hash(Stream data, CancellationToken cancellationToken = default)
+        {
+            using (var sha256Hash = SHA256.Create())
+            {
+                return await sha256Hash.ComputeHashAsync(data, cancellationToken);
             }
         }
     }

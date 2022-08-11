@@ -2,6 +2,7 @@
 using Qitar.Security;
 using Qitar.Tenancy;
 using System;
+using System.Threading.Tasks;
 
 namespace Qitar.Utils
 {
@@ -18,15 +19,16 @@ namespace Qitar.Utils
             _currentUser = currentUser.NotNull();
         }
 
-        public Guid Create(Guid sourceId)
+        public async ValueTask<Guid> Create(Guid sourceId)
         {
             var uidBytes = Guid.NewGuid().ToByteArray();
             var tenateBytes = _currentTenant.Id.ToByteArray();
             var userBytes = _currentUser.Id.ToByteArray();
             var souriceByte = (sourceId != Guid.Empty) ? sourceId.ToByteArray() : Array.Empty<byte>();
 
-            var identity = GuidFromBytes(tenateBytes, userBytes).ToByteArray();
-            var uid = GuidFromBytes(uidBytes, souriceByte).ToByteArray();
+            var identity = (await GuidFromBytes(tenateBytes, userBytes).ConfigureAwait(false)).ToByteArray();
+           
+            var uid = (await GuidFromBytes(uidBytes, souriceByte).ConfigureAwait(false)).ToByteArray();
 
             return new Guid(
                     new[]
@@ -39,19 +41,19 @@ namespace Qitar.Utils
                     });
         }
 
-        public Guid Create()
+        public async ValueTask<Guid> Create()
         {
-            return Create(Guid.Empty);
+            return await Create(Guid.Empty).ConfigureAwait(false);
         }
 
-        private Guid GuidFromBytes(byte[] a, byte[] b)
+        private async ValueTask<Guid> GuidFromBytes(byte[] a, byte[] b)
         {
             var combinedBytes = new byte[a.Length + b.Length];
 
             Buffer.BlockCopy(a, 0, combinedBytes, 0, a.Length);
             Buffer.BlockCopy(b, 0, combinedBytes, 0, b.Length);
 
-            var hash = _hasher.Hash(combinedBytes);
+            var hash = await _hasher.Hash(combinedBytes.ToStream()).ConfigureAwait(false);
 
             var newGuid = new byte[16];
             Array.Copy(hash, 0, newGuid, 0, 16);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Qitar.Utils
@@ -37,6 +38,11 @@ namespace Qitar.Utils
         public static ValueTask<T> ValueTask<T>(this T value)
         {
             return new ValueTask<T>(value);
+        }
+
+        public static MemoryStream ToStream(this byte[] buffer)
+        {
+            return new MemoryStream(buffer);
         }
 
     }

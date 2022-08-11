@@ -7,7 +7,7 @@ namespace Qitar.Entities
     public abstract class Entity<TKey> : IEntity<TKey>, IEquatable<Entity<TKey>> where TKey : IEquatable<TKey>
     {
         [Key]
-        public virtual TKey Id { get; set; }
+        public TKey Id { get; set; }
 
         public override bool Equals(object obj)
         {
